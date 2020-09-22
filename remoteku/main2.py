@@ -6,7 +6,7 @@ import requests
 import time
 
 ### This is a basic working reote for power control
-
+stats_counter = 30
 counter = 0
 running = False
 timing = 0
@@ -17,12 +17,40 @@ dadL = "http://192.168.0.111"
 dadR = "http://192.168.0.203"
 dadBOTH = [dadL, dadR]
 lrTV = "http://192.168.0.200"
-
+sisTV = "http://192.168.1.199"
+parkTV = "http://192.168.1.198"
+response = {}
+devs = {}
+    
 api_calls = {
     "device_info": "/query/device-info",
     "get_apps": "/query/apps",
     "power_cycle": "/keypress/power"
     }
+
+alive_devs = []
+
+def api_req(dev, api_call):
+    import xmltodict
+    try:
+        r = requests.get(dev + api_port + api_call)
+    except Exception as e:
+        response = "Exception Thrown : {}".format(e)
+        print(e)
+        return response
+    except TimeoutError as timeout:
+        response = "Timeout Occured: {}".format(timeout)
+        print(timeout)
+        return response
+    else:
+        r_code = r.status_code
+        if r_code == 200:
+            print("REQUEST WAS A SUCCESS. DEVICE RETURNED: {} ".format(str(r)))
+            r2 = r.text
+            response = xmltodict.parse(r2, xml_attribs=False)
+            return response
+        else:
+            response = "ERROR"
 
 def dadspwr():
     for item in dadBOTH:
@@ -34,21 +62,44 @@ def dadspwr():
         msg_box(result)
 
 def pwr(dev):
-    r = requests.post(dev + ":8060/keypress/power")
-    if r.status_code == 200:
-        result = "OK"
+    try:
+        r = requests.post(dev + ":8060/keypress/power")
+    except Exception as e:
+        result = "Exception thrown"#: {}".format(e))
+        return result
     else:
-        result= "ERROR"
-    return result
+        if r.status_code == 200:
+            result = "OK"
+        else:
+            result= "ERROR"
+            return result
 
 def pwrbtn_click(dev):
     result = pwr(dev)
+    pwr_state_fg = pwr_status(dev)
     global running
     global counter
     running = True
     counter = -1
     msg_box(result)
-    #label = Label(root, text="Result: {}".format((result)))
+
+def pwr_status(dev):
+        api_call = "/query/device-info"
+        response = api_req(dev, api_call)
+        dev_info = response.get("device-info")
+        pwr_state = dev_info.get("power-mode")
+        if pwr_state == "Ready":
+            pwr_status = "Ready"
+            pwr_color = "orange"
+            return pwr_color
+        elif pwr_state == "PowerOn":
+            pwr_status = "On"
+            pwr_color = "green"
+            return pwr_color
+        else:
+            pwr_status = "Unknown"
+            pwr_color = "red"
+            return pwr_color
 
 
 def msg_box(msg_label):
@@ -90,23 +141,26 @@ def msg_box(msg_label):
 # Triggering the start of the counter.
     count()
 
-
 root = Tk()
 root.title("RemoteKu C5dev--..")
 root.minsize(width=250, height=70)
 msg_frame = LabelFrame(root, text = "Message Box")
 label = Label(msg_frame, text="Welcome")
-#msg_frame_label = Label(msg_frame, text="Welcome")
-button1 = Button(root, text="L Pwr", command=lambda: pwrbtn_click(dadL))  # , padx=50, pady=100)
-button2 = Button(root, text="R Pwr", command=lambda: pwrbtn_click(dadR))
-button5 = Button(root, text="LR TV Pwr", command=lambda: pwrbtn_click(lrTV))
+button1 = Button(root, text="L Pwr", bg="white", fg=pwr_status(dadL), command=lambda: pwrbtn_click(dadL))  # , padx=50, pady=100)
+button2 = Button(root, text="R Pwr", bg="white", fg=pwr_status(dadL), command=lambda: pwrbtn_click(dadR))
+button5 = Button(root, text="LR TV Pwr", bg="white", fg=pwr_status(lrTV), command=lambda: pwrbtn_click(lrTV))
 button3 = Button(root, text="Both Pwr", command=dadspwr)
+button6 = Button(root, text="Park Pwr", bg="white", fg="red", command=lambda: pwrbtn_click(parkTV))
+button7 = Button(root, text="Sis Pwr", bg="white", fg=pwr_status(sisTV), command=lambda: pwrbtn_click(sisTV))
 button4 = Button(root, text="Exit", command=root.destroy)
 button1.grid(row=1, column=0)
 button2.grid(row=1, column=1)
 button3.grid(row=1, column=2)
-button4.grid(row=2)
-msg_frame.grid(row=3, columnspan=2)#fill="both", expand="yes")
+button5.grid(row=2, column=0)
+button6.grid(row=2, column=1)
+button7.grid(row=2, column=2)
+button4.grid(row=4)
+msg_frame.grid(row=3, columnspan=10)#fill="both", expand="yes")
 #msg_frame_label.pack()
 label.pack()
 
