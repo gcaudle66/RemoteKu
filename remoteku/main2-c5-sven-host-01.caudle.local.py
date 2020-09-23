@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter.constants import *
+import api
 import requests
 import time
 
@@ -38,13 +39,10 @@ def api_req(dev, api_call):
         r = requests.get(dev + api_port + api_call, timeout=10)
     except Exception as exc:
         response = "ERR"
-        return response
     except ConnectionError as connerr:
         response = "ERR"
-        return response
     except TimeoutError:
         response = "ERR"
-        return response
     r_code = r.status_code
     if r_code == 200:
         print("REQUEST WAS A SUCCESS. DEVICE RETURNED: {} ".format(str(r)))
@@ -162,12 +160,12 @@ root.title("RemoteKu C5dev--..")
 root.minsize(width=250, height=70)
 msg_frame = LabelFrame(root, text = "Message Box")
 label = Label(msg_frame, text="Welcome")
-button1 = Button(root, text="L Pwr", bg="white", command=lambda: pwrbtn_click(dadL))#, fg=pwr_status(dadL)  # , padx=50, pady=100)
-button2 = Button(root, text="R Pwr", bg="white", command=lambda: pwrbtn_click(dadR))#, fg=pwr_status(dadL))
-button5 = Button(root, text="LR TV Pwr", bg="white", command=lambda: pwrbtn_click(lrTV))#, fg=pwr_status(lrTV))
+button1 = Button(root, text="L Pwr", bg="white", fg=pwr_status(dadL), command=lambda: pwrbtn_click(dadL))  # , padx=50, pady=100)
+button2 = Button(root, text="R Pwr", bg="white", fg=pwr_status(dadL), command=lambda: pwrbtn_click(dadR))
+button5 = Button(root, text="LR TV Pwr", bg="white", fg=pwr_status(lrTV), command=lambda: pwrbtn_click(lrTV))
 button3 = Button(root, text="Both Pwr", command=dadspwr)
 button6 = Button(root, text="Park Pwr", bg="white", fg="red", command=lambda: pwrbtn_click(parkTV))
-button7 = Button(root, text="Sis Pwr", bg="white", command=lambda: pwrbtn_click(sisTrV))
+button7 = Button(root, text="Sis Pwr", bg="white", fg=pwr_status(sisTV), command=lambda: pwrbtn_click(sisTV))
 button4 = Button(root, text="Exit", command=root.destroy)
 button1.grid(row=1, column=0)
 button2.grid(row=1, column=1)

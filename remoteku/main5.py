@@ -1,8 +1,11 @@
+import tkinter
 from tkinter import *
-from tkinter import messagebox
 from tkinter.constants import *
+from tkinter import ttk
+from tkinter.ttk import *
 import requests
 import time
+import gui
 
 ### This is a basic working reote for power control
 stats_counter = 30
@@ -159,25 +162,65 @@ def msg_box(msg_label):
 
 root = Tk()
 root.title("RemoteKu C5dev--..")
-root.minsize(width=250, height=70)
-msg_frame = LabelFrame(root, text = "Message Box")
-label = Label(msg_frame, text="Welcome")
-button1 = Button(root, text="L Pwr", bg="white", command=lambda: pwrbtn_click(dadL))#, fg=pwr_status(dadL)  # , padx=50, pady=100)
-button2 = Button(root, text="R Pwr", bg="white", command=lambda: pwrbtn_click(dadR))#, fg=pwr_status(dadL))
-button5 = Button(root, text="LR TV Pwr", bg="white", command=lambda: pwrbtn_click(lrTV))#, fg=pwr_status(lrTV))
-button3 = Button(root, text="Both Pwr", command=dadspwr)
-button6 = Button(root, text="Park Pwr", bg="white", fg="red", command=lambda: pwrbtn_click(parkTV))
-button7 = Button(root, text="Sis Pwr", bg="white", command=lambda: pwrbtn_click(sisTrV))
-button4 = Button(root, text="Exit", command=root.destroy)
-button1.grid(row=1, column=0)
-button2.grid(row=1, column=1)
-button3.grid(row=1, column=2)
-button5.grid(row=2, column=0)
-button6.grid(row=2, column=1)
-button7.grid(row=2, column=2)
-button4.grid(row=4)
-msg_frame.grid(row=3, columnspan=10)#fill="both", expand="yes")
-#msg_frame_label.pack()
-label.pack()
+root.minsize(width=100, height=70)
+notebook1 = ttk.Notebook(root)
+notebook1.pack(pady=15)
+
+tab1 = ttk.Frame(notebook1)
+tab2 = ttk.Frame(notebook1)
+tab3 = ttk.Frame(notebook1)
+tab4 = ttk.Frame(notebook1)
+
+notebook1.add(tab1, text="CC-TVs")
+notebook1.add(tab2, text="LR-TV")
+notebook1.add(tab3, text="SIS-TV")
+notebook1.add(tab4, text="PARK-TV")
+
+btn1 = ttk.Button(tab1, text="Pwr").grid(row=1, column=1)
+btn2 = ttk.Button(tab1, text=" ^ ").grid(row=1, column=2)
+btn3 = ttk.Button(tab1, text="Input").grid(row=1, column=3)
+
+btn4 = ttk.Button(tab1, text=" < ").grid(row=2, column=1)
+btn5 = ttk.Button(tab1, text="Enter").grid(row=2, column=2)
+btn6 = ttk.Button(tab1, text=" > ").grid(row=2, column=3)
+
+btn7 = ttk.Button(tab1, text=" ").grid(row=3, column=1)
+btn8 = ttk.Button(tab1, text="\/").grid(row=3, column=2)
+btn9 = ttk.Button(tab1, text="Vol Up").grid(row=3, column=3)
+
+btn10 = ttk.Button(tab1, text=" ").grid(row=4, column=1)
+btn11= ttk.Button(tab1, text="Stat").grid(row=4, column=2)
+btn12 = ttk.Button(tab1, text="Vol Dn").grid(row=4, column=3)
+
+
+msg_frame1 = LabelFrame(tab1, text = "Message Box")
+msg_frame2 = LabelFrame(tab2, text = "Message Box")
+msg_frame3 = LabelFrame(tab3, text = "Message Box")
+msg_frame4 = LabelFrame(tab4, text = "Message Box")
+label1 = Label(msg_frame1, text="Welcome").pack()
+label2 = Label(msg_frame2, text="Welcome").pack()
+label3 = Label(msg_frame3, text="Welcome").pack()
+label4 = Label(msg_frame4, text="Welcome").pack()
+
+
+##button1 = Button(root, text="L Pwr", bg="white", command=lambda: pwrbtn_click(dadL))#, fg=pwr_status(dadL)  # , padx=50, pady=100)
+##button2 = Button(root, text="R Pwr", bg="white", command=lambda: pwrbtn_click(dadR))#, fg=pwr_status(dadL))
+##button5 = Button(root, text="LR TV Pwr", bg="white", command=lambda: pwrbtn_click(lrTV))#, fg=pwr_status(lrTV))
+##button3 = Button(root, text="Both Pwr", command=dadspwr)
+##button6 = Button(root, text="Park Pwr", bg="white", fg="red", command=lambda: pwrbtn_click(parkTV))
+##button7 = Button(root, text="Sis Pwr", bg="white", command=lambda: pwrbtn_click(sisTrV))
+##button4 = Button(root, text="Exit", command=root.destroy)
+##button1.grid(row=1, column=0)
+##button2.grid(row=1, column=1)
+##button3.grid(row=1, column=2)
+##button5.grid(row=2, column=0)
+##button6.grid(row=2, column=1)
+##button7.grid(row=2, column=2)
+##button4.grid(row=4)
+msg_frame1.grid(sticky="s", columnspan=10)
+msg_frame2.grid(sticky="s", columnspan=10)
+msg_frame3.grid(sticky="s", columnspan=10)
+msg_frame4.grid(sticky="s", columnspan=10)
+
 
 root.mainloop()
