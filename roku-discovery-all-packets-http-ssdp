@@ -1,0 +1,626 @@
+No.     Time           Source                Destination           Protocol Length Info
+      6 4.677028885    192.168.0.110         239.255.255.250       SSDP     124    M-SEARCH * HTTP/1.1 
+
+Frame 6: 124 bytes on wire (992 bits), 124 bytes captured (992 bits) on interface 0
+    Interface id: 0
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Sep 19, 2020 17:24:12.707588693 CDT
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1600554252.707588693 seconds
+    [Time delta from previous captured frame: 1.492061999 seconds]
+    [Time delta from previous displayed frame: 0.000000000 seconds]
+    [Time since reference or first frame: 4.677028885 seconds]
+    Frame Number: 6
+    Frame Length: 124 bytes (992 bits)
+    Capture Length: 124 bytes (992 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ip:udp:http]
+    [Number of per-protocol-data: 1]
+    [Hypertext Transfer Protocol, key 0]
+    [Coloring Rule Name: HTTP]
+    [Coloring Rule String: http || tcp.port == 80]
+Ethernet II, Src: Hewlett-_f6:30:90 (18:a9:05:f6:30:90), Dst: IPv4mcast_7f:ff:fa (01:00:5e:7f:ff:fa)
+    Destination: IPv4mcast_7f:ff:fa (01:00:5e:7f:ff:fa)
+        Address: IPv4mcast_7f:ff:fa (01:00:5e:7f:ff:fa)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...1 .... .... .... .... = IG bit: Group address (multicast/broadcast)
+    Source: Hewlett-_f6:30:90 (18:a9:05:f6:30:90)
+        Address: Hewlett-_f6:30:90 (18:a9:05:f6:30:90)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IP (0x0800)
+Internet Protocol Version 4, Src: 192.168.0.110 (192.168.0.110), Dst: 239.255.255.250 (239.255.255.250)
+    Version: 4
+    Header length: 20 bytes
+    Differentiated Services Field: 0x00 (DSCP 0x00: Default; ECN: 0x00: Not-ECT (Not ECN-Capable Transport))
+        0000 00.. = Differentiated Services Codepoint: Default (0x00)
+        .... ..00 = Explicit Congestion Notification: Not-ECT (Not ECN-Capable Transport) (0x00)
+    Total Length: 110
+    Identification: 0x7d68 (32104)
+    Flags: 0x02 (Don't Fragment)
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 1
+    Protocol: UDP (17)
+    Header checksum: 0x4b06 [validation disabled]
+        [Good: False]
+        [Bad: False]
+    Source: 192.168.0.110 (192.168.0.110)
+    Destination: 239.255.255.250 (239.255.255.250)
+User Datagram Protocol, Src Port: 59840 (59840), Dst Port: ssdp (1900)
+    Source port: 59840 (59840)
+    Destination port: ssdp (1900)
+    Length: 90
+    Checksum: 0xb17c [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+Hypertext Transfer Protocol
+    M-SEARCH * HTTP/1.1\n
+        [Expert Info (Chat/Sequence): M-SEARCH * HTTP/1.1\n]
+            [Message: M-SEARCH * HTTP/1.1\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: M-SEARCH
+        Request URI: *
+        Request Version: HTTP/1.1
+    Host: 239.255.255.250:1900\n
+    Man: "ssdp:discover"\n
+    ST: roku:ecp\n
+    \n
+    [Full request URI: http://239.255.255.250:1900*]
+    [HTTP request 1/1]
+
+No.     Time           Source                Destination           Protocol Length Info
+      7 4.939488378    192.168.0.111         192.168.0.110         SSDP     309    HTTP/1.1 200 OK 
+
+Frame 7: 309 bytes on wire (2472 bits), 309 bytes captured (2472 bits) on interface 0
+    Interface id: 0
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Sep 19, 2020 17:24:12.970048186 CDT
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1600554252.970048186 seconds
+    [Time delta from previous captured frame: 0.262459493 seconds]
+    [Time delta from previous displayed frame: 0.262459493 seconds]
+    [Time since reference or first frame: 4.939488378 seconds]
+    Frame Number: 7
+    Frame Length: 309 bytes (2472 bits)
+    Capture Length: 309 bytes (2472 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ip:udp:http]
+    [Number of per-protocol-data: 1]
+    [Hypertext Transfer Protocol, key 0]
+    [Coloring Rule Name: HTTP]
+    [Coloring Rule String: http || tcp.port == 80]
+Ethernet II, Src: 10:3d:0a:1b:73:01 (10:3d:0a:1b:73:01), Dst: Hewlett-_f6:30:90 (18:a9:05:f6:30:90)
+    Destination: Hewlett-_f6:30:90 (18:a9:05:f6:30:90)
+        Address: Hewlett-_f6:30:90 (18:a9:05:f6:30:90)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: 10:3d:0a:1b:73:01 (10:3d:0a:1b:73:01)
+        Address: 10:3d:0a:1b:73:01 (10:3d:0a:1b:73:01)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IP (0x0800)
+Internet Protocol Version 4, Src: 192.168.0.111 (192.168.0.111), Dst: 192.168.0.110 (192.168.0.110)
+    Version: 4
+    Header length: 20 bytes
+    Differentiated Services Field: 0x00 (DSCP 0x00: Default; ECN: 0x00: Not-ECT (Not ECN-Capable Transport))
+        0000 00.. = Differentiated Services Codepoint: Default (0x00)
+        .... ..00 = Explicit Congestion Notification: Not-ECT (Not ECN-Capable Transport) (0x00)
+    Total Length: 295
+    Identification: 0x742c (29740)
+    Flags: 0x02 (Don't Fragment)
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 64
+    Protocol: UDP (17)
+    Header checksum: 0x436c [validation disabled]
+        [Good: False]
+        [Bad: False]
+    Source: 192.168.0.111 (192.168.0.111)
+    Destination: 192.168.0.110 (192.168.0.110)
+User Datagram Protocol, Src Port: ssdp (1900), Dst Port: 59840 (59840)
+    Source port: ssdp (1900)
+    Destination port: 59840 (59840)
+    Length: 275
+    Checksum: 0x1499 [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+Hypertext Transfer Protocol
+    HTTP/1.1 200 OK\r\n
+        [Expert Info (Chat/Sequence): HTTP/1.1 200 OK\r\n]
+            [Message: HTTP/1.1 200 OK\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Version: HTTP/1.1
+        Status Code: 200
+        Response Phrase: OK
+    Cache-Control: max-age=3600\r\n
+    ST: roku:ecp\r\n
+    USN: uuid:roku:ecp:YK00Y3901100\r\n
+    Ext: \r\n
+    Server: Roku/9.3.0 UPnP/1.0 Roku/9.3.0\r\n
+    LOCATION: http://192.168.0.111:8060/\r\n
+    device-group.roku.com: 2BA1EC48DAE07CCD4103\r\n
+    WAKEUP: MAC=10:3d:0a:1b:73:01;Timeout=10\r\n
+    \r\n
+    [HTTP response 1/2]
+    [Next response in frame: 8]
+
+No.     Time           Source                Destination           Protocol Length Info
+      8 4.939554728    192.168.0.110         192.168.0.111         ICMP     337    Destination unreachable (Host administratively prohibited)
+
+Frame 8: 337 bytes on wire (2696 bits), 337 bytes captured (2696 bits) on interface 0
+    Interface id: 0
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Sep 19, 2020 17:24:12.970114536 CDT
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1600554252.970114536 seconds
+    [Time delta from previous captured frame: 0.000066350 seconds]
+    [Time delta from previous displayed frame: 0.000066350 seconds]
+    [Time since reference or first frame: 4.939554728 seconds]
+    Frame Number: 8
+    Frame Length: 337 bytes (2696 bits)
+    Capture Length: 337 bytes (2696 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ip:icmp:ip:udp:http]
+    [Number of per-protocol-data: 1]
+    [Hypertext Transfer Protocol, key 0]
+    [Coloring Rule Name: ICMP errors]
+    [Coloring Rule String: icmp.type eq 3 || icmp.type eq 4 || icmp.type eq 5 || icmp.type eq 11 || icmpv6.type eq 1 || icmpv6.type eq 2 || icmpv6.type eq 3 || icmpv6.type eq 4]
+Ethernet II, Src: Hewlett-_f6:30:90 (18:a9:05:f6:30:90), Dst: 10:3d:0a:1b:73:01 (10:3d:0a:1b:73:01)
+    Destination: 10:3d:0a:1b:73:01 (10:3d:0a:1b:73:01)
+        Address: 10:3d:0a:1b:73:01 (10:3d:0a:1b:73:01)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: Hewlett-_f6:30:90 (18:a9:05:f6:30:90)
+        Address: Hewlett-_f6:30:90 (18:a9:05:f6:30:90)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IP (0x0800)
+Internet Protocol Version 4, Src: 192.168.0.110 (192.168.0.110), Dst: 192.168.0.111 (192.168.0.111)
+    Version: 4
+    Header length: 20 bytes
+    Differentiated Services Field: 0xc0 (DSCP 0x30: Class Selector 6; ECN: 0x00: Not-ECT (Not ECN-Capable Transport))
+        1100 00.. = Differentiated Services Codepoint: Class Selector 6 (0x30)
+        .... ..00 = Explicit Congestion Notification: Not-ECT (Not ECN-Capable Transport) (0x00)
+    Total Length: 323
+    Identification: 0x085c (2140)
+    Flags: 0x00
+        0... .... = Reserved bit: Not set
+        .0.. .... = Don't fragment: Not set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 64
+    Protocol: ICMP (1)
+    Header checksum: 0xee70 [validation disabled]
+        [Good: False]
+        [Bad: False]
+    Source: 192.168.0.110 (192.168.0.110)
+    Destination: 192.168.0.111 (192.168.0.111)
+Internet Control Message Protocol
+    Type: 3 (Destination unreachable)
+    Code: 10 (Host administratively prohibited)
+    Checksum: 0x8048 [correct]
+    Internet Protocol Version 4, Src: 192.168.0.111 (192.168.0.111), Dst: 192.168.0.110 (192.168.0.110)
+        Version: 4
+        Header length: 20 bytes
+        Differentiated Services Field: 0x00 (DSCP 0x00: Default; ECN: 0x00: Not-ECT (Not ECN-Capable Transport))
+            0000 00.. = Differentiated Services Codepoint: Default (0x00)
+            .... ..00 = Explicit Congestion Notification: Not-ECT (Not ECN-Capable Transport) (0x00)
+        Total Length: 295
+        Identification: 0x742c (29740)
+        Flags: 0x02 (Don't Fragment)
+            0... .... = Reserved bit: Not set
+            .1.. .... = Don't fragment: Set
+            ..0. .... = More fragments: Not set
+        Fragment offset: 0
+        Time to live: 64
+        Protocol: UDP (17)
+        Header checksum: 0x436c [validation disabled]
+            [Good: False]
+            [Bad: False]
+        Source: 192.168.0.111 (192.168.0.111)
+        Destination: 192.168.0.110 (192.168.0.110)
+    User Datagram Protocol, Src Port: ssdp (1900), Dst Port: 59840 (59840)
+        Source port: ssdp (1900)
+        Destination port: 59840 (59840)
+        Length: 275
+        Checksum: 0x1499 [validation disabled]
+            [Good Checksum: False]
+            [Bad Checksum: False]
+    Hypertext Transfer Protocol
+        HTTP/1.1 200 OK\r\n
+            [Expert Info (Chat/Sequence): HTTP/1.1 200 OK\r\n]
+                [Message: HTTP/1.1 200 OK\r\n]
+                [Severity level: Chat]
+                [Group: Sequence]
+            Request Version: HTTP/1.1
+            Status Code: 200
+            Response Phrase: OK
+        Cache-Control: max-age=3600\r\n
+        ST: roku:ecp\r\n
+        USN: uuid:roku:ecp:YK00Y3901100\r\n
+        Ext: \r\n
+        Server: Roku/9.3.0 UPnP/1.0 Roku/9.3.0\r\n
+        LOCATION: http://192.168.0.111:8060/\r\n
+        device-group.roku.com: 2BA1EC48DAE07CCD4103\r\n
+        WAKEUP: MAC=10:3d:0a:1b:73:01;Timeout=10\r\n
+        \r\n
+        [HTTP response 2/2]
+        [Prev response in frame: 7]
+
+No.     Time           Source                Destination           Protocol Length Info
+     11 5.090660808    192.168.0.203         192.168.0.110         SSDP     309    HTTP/1.1 200 OK 
+
+Frame 11: 309 bytes on wire (2472 bits), 309 bytes captured (2472 bits) on interface 0
+    Interface id: 0
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Sep 19, 2020 17:24:13.121220616 CDT
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1600554253.121220616 seconds
+    [Time delta from previous captured frame: 0.001327489 seconds]
+    [Time delta from previous displayed frame: 0.151106080 seconds]
+    [Time since reference or first frame: 5.090660808 seconds]
+    Frame Number: 11
+    Frame Length: 309 bytes (2472 bits)
+    Capture Length: 309 bytes (2472 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ip:udp:http]
+    [Number of per-protocol-data: 1]
+    [Hypertext Transfer Protocol, key 0]
+    [Coloring Rule Name: HTTP]
+    [Coloring Rule String: http || tcp.port == 80]
+Ethernet II, Src: 34:f1:50:61:ac:bc (34:f1:50:61:ac:bc), Dst: Hewlett-_f6:30:90 (18:a9:05:f6:30:90)
+    Destination: Hewlett-_f6:30:90 (18:a9:05:f6:30:90)
+        Address: Hewlett-_f6:30:90 (18:a9:05:f6:30:90)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: 34:f1:50:61:ac:bc (34:f1:50:61:ac:bc)
+        Address: 34:f1:50:61:ac:bc (34:f1:50:61:ac:bc)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IP (0x0800)
+Internet Protocol Version 4, Src: 192.168.0.203 (192.168.0.203), Dst: 192.168.0.110 (192.168.0.110)
+    Version: 4
+    Header length: 20 bytes
+    Differentiated Services Field: 0x00 (DSCP 0x00: Default; ECN: 0x00: Not-ECT (Not ECN-Capable Transport))
+        0000 00.. = Differentiated Services Codepoint: Default (0x00)
+        .... ..00 = Explicit Congestion Notification: Not-ECT (Not ECN-Capable Transport) (0x00)
+    Total Length: 295
+    Identification: 0xf713 (63251)
+    Flags: 0x02 (Don't Fragment)
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 64
+    Protocol: UDP (17)
+    Header checksum: 0xc028 [validation disabled]
+        [Good: False]
+        [Bad: False]
+    Source: 192.168.0.203 (192.168.0.203)
+    Destination: 192.168.0.110 (192.168.0.110)
+User Datagram Protocol, Src Port: ssdp (1900), Dst Port: 59840 (59840)
+    Source port: ssdp (1900)
+    Destination port: 59840 (59840)
+    Length: 275
+    Checksum: 0x7940 [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+Hypertext Transfer Protocol
+    HTTP/1.1 200 OK\r\n
+        [Expert Info (Chat/Sequence): HTTP/1.1 200 OK\r\n]
+            [Message: HTTP/1.1 200 OK\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Version: HTTP/1.1
+        Status Code: 200
+        Response Phrase: OK
+    Cache-Control: max-age=3600\r\n
+    ST: roku:ecp\r\n
+    USN: uuid:roku:ecp:YK00LX028594\r\n
+    Ext: \r\n
+    Server: Roku/9.3.0 UPnP/1.0 Roku/9.3.0\r\n
+    LOCATION: http://192.168.0.203:8060/\r\n
+    device-group.roku.com: 2BA1EC48DAE07CCD4103\r\n
+    WAKEUP: MAC=34:f1:50:61:ac:bc;Timeout=10\r\n
+    \r\n
+    [HTTP response 1/2]
+    [Next response in frame: 12]
+
+No.     Time           Source                Destination           Protocol Length Info
+     12 5.090715285    192.168.0.110         192.168.0.203         ICMP     337    Destination unreachable (Host administratively prohibited)
+
+Frame 12: 337 bytes on wire (2696 bits), 337 bytes captured (2696 bits) on interface 0
+    Interface id: 0
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Sep 19, 2020 17:24:13.121275093 CDT
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1600554253.121275093 seconds
+    [Time delta from previous captured frame: 0.000054477 seconds]
+    [Time delta from previous displayed frame: 0.000054477 seconds]
+    [Time since reference or first frame: 5.090715285 seconds]
+    Frame Number: 12
+    Frame Length: 337 bytes (2696 bits)
+    Capture Length: 337 bytes (2696 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ip:icmp:ip:udp:http]
+    [Number of per-protocol-data: 1]
+    [Hypertext Transfer Protocol, key 0]
+    [Coloring Rule Name: ICMP errors]
+    [Coloring Rule String: icmp.type eq 3 || icmp.type eq 4 || icmp.type eq 5 || icmp.type eq 11 || icmpv6.type eq 1 || icmpv6.type eq 2 || icmpv6.type eq 3 || icmpv6.type eq 4]
+Ethernet II, Src: Hewlett-_f6:30:90 (18:a9:05:f6:30:90), Dst: 34:f1:50:61:ac:bc (34:f1:50:61:ac:bc)
+    Destination: 34:f1:50:61:ac:bc (34:f1:50:61:ac:bc)
+        Address: 34:f1:50:61:ac:bc (34:f1:50:61:ac:bc)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: Hewlett-_f6:30:90 (18:a9:05:f6:30:90)
+        Address: Hewlett-_f6:30:90 (18:a9:05:f6:30:90)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IP (0x0800)
+Internet Protocol Version 4, Src: 192.168.0.110 (192.168.0.110), Dst: 192.168.0.203 (192.168.0.203)
+    Version: 4
+    Header length: 20 bytes
+    Differentiated Services Field: 0xc0 (DSCP 0x30: Class Selector 6; ECN: 0x00: Not-ECT (Not ECN-Capable Transport))
+        1100 00.. = Differentiated Services Codepoint: Class Selector 6 (0x30)
+        .... ..00 = Explicit Congestion Notification: Not-ECT (Not ECN-Capable Transport) (0x00)
+    Total Length: 323
+    Identification: 0x97b8 (38840)
+    Flags: 0x00
+        0... .... = Reserved bit: Not set
+        .0.. .... = Don't fragment: Not set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 64
+    Protocol: ICMP (1)
+    Header checksum: 0x5eb8 [validation disabled]
+        [Good: False]
+        [Bad: False]
+    Source: 192.168.0.110 (192.168.0.110)
+    Destination: 192.168.0.203 (192.168.0.203)
+Internet Control Message Protocol
+    Type: 3 (Destination unreachable)
+    Code: 10 (Host administratively prohibited)
+    Checksum: 0x80a4 [correct]
+    Internet Protocol Version 4, Src: 192.168.0.203 (192.168.0.203), Dst: 192.168.0.110 (192.168.0.110)
+        Version: 4
+        Header length: 20 bytes
+        Differentiated Services Field: 0x00 (DSCP 0x00: Default; ECN: 0x00: Not-ECT (Not ECN-Capable Transport))
+            0000 00.. = Differentiated Services Codepoint: Default (0x00)
+            .... ..00 = Explicit Congestion Notification: Not-ECT (Not ECN-Capable Transport) (0x00)
+        Total Length: 295
+        Identification: 0xf713 (63251)
+        Flags: 0x02 (Don't Fragment)
+            0... .... = Reserved bit: Not set
+            .1.. .... = Don't fragment: Set
+            ..0. .... = More fragments: Not set
+        Fragment offset: 0
+        Time to live: 64
+        Protocol: UDP (17)
+        Header checksum: 0xc028 [validation disabled]
+            [Good: False]
+            [Bad: False]
+        Source: 192.168.0.203 (192.168.0.203)
+        Destination: 192.168.0.110 (192.168.0.110)
+    User Datagram Protocol, Src Port: ssdp (1900), Dst Port: 59840 (59840)
+        Source port: ssdp (1900)
+        Destination port: 59840 (59840)
+        Length: 275
+        Checksum: 0x7940 [validation disabled]
+            [Good Checksum: False]
+            [Bad Checksum: False]
+    Hypertext Transfer Protocol
+        HTTP/1.1 200 OK\r\n
+            [Expert Info (Chat/Sequence): HTTP/1.1 200 OK\r\n]
+                [Message: HTTP/1.1 200 OK\r\n]
+                [Severity level: Chat]
+                [Group: Sequence]
+            Request Version: HTTP/1.1
+            Status Code: 200
+            Response Phrase: OK
+        Cache-Control: max-age=3600\r\n
+        ST: roku:ecp\r\n
+        USN: uuid:roku:ecp:YK00LX028594\r\n
+        Ext: \r\n
+        Server: Roku/9.3.0 UPnP/1.0 Roku/9.3.0\r\n
+        LOCATION: http://192.168.0.203:8060/\r\n
+        device-group.roku.com: 2BA1EC48DAE07CCD4103\r\n
+        WAKEUP: MAC=34:f1:50:61:ac:bc;Timeout=10\r\n
+        \r\n
+        [HTTP response 2/2]
+        [Prev response in frame: 11]
+
+No.     Time           Source                Destination           Protocol Length Info
+     16 5.433036098    192.168.0.200         192.168.0.110         SSDP     309    HTTP/1.1 200 OK 
+
+Frame 16: 309 bytes on wire (2472 bits), 309 bytes captured (2472 bits) on interface 0
+    Interface id: 0
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Sep 19, 2020 17:24:13.463595906 CDT
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1600554253.463595906 seconds
+    [Time delta from previous captured frame: 0.000992596 seconds]
+    [Time delta from previous displayed frame: 0.342320813 seconds]
+    [Time since reference or first frame: 5.433036098 seconds]
+    Frame Number: 16
+    Frame Length: 309 bytes (2472 bits)
+    Capture Length: 309 bytes (2472 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ip:udp:http]
+    [Number of per-protocol-data: 1]
+    [Hypertext Transfer Protocol, key 0]
+    [Coloring Rule Name: HTTP]
+    [Coloring Rule String: http || tcp.port == 80]
+Ethernet II, Src: 10:3d:0a:74:2b:08 (10:3d:0a:74:2b:08), Dst: Hewlett-_f6:30:90 (18:a9:05:f6:30:90)
+    Destination: Hewlett-_f6:30:90 (18:a9:05:f6:30:90)
+        Address: Hewlett-_f6:30:90 (18:a9:05:f6:30:90)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: 10:3d:0a:74:2b:08 (10:3d:0a:74:2b:08)
+        Address: 10:3d:0a:74:2b:08 (10:3d:0a:74:2b:08)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IP (0x0800)
+Internet Protocol Version 4, Src: 192.168.0.200 (192.168.0.200), Dst: 192.168.0.110 (192.168.0.110)
+    Version: 4
+    Header length: 20 bytes
+    Differentiated Services Field: 0x00 (DSCP 0x00: Default; ECN: 0x00: Not-ECT (Not ECN-Capable Transport))
+        0000 00.. = Differentiated Services Codepoint: Default (0x00)
+        .... ..00 = Explicit Congestion Notification: Not-ECT (Not ECN-Capable Transport) (0x00)
+    Total Length: 295
+    Identification: 0x01d5 (469)
+    Flags: 0x02 (Don't Fragment)
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 64
+    Protocol: UDP (17)
+    Header checksum: 0xb56a [validation disabled]
+        [Good: False]
+        [Bad: False]
+    Source: 192.168.0.200 (192.168.0.200)
+    Destination: 192.168.0.110 (192.168.0.110)
+User Datagram Protocol, Src Port: ssdp (1900), Dst Port: 59840 (59840)
+    Source port: ssdp (1900)
+    Destination port: 59840 (59840)
+    Length: 275
+    Checksum: 0xbc7b [validation disabled]
+        [Good Checksum: False]
+        [Bad Checksum: False]
+Hypertext Transfer Protocol
+    HTTP/1.1 200 OK\r\n
+        [Expert Info (Chat/Sequence): HTTP/1.1 200 OK\r\n]
+            [Message: HTTP/1.1 200 OK\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Version: HTTP/1.1
+        Status Code: 200
+        Response Phrase: OK
+    Cache-Control: max-age=3600\r\n
+    ST: roku:ecp\r\n
+    USN: uuid:roku:ecp:YS00H7494838\r\n
+    Ext: \r\n
+    Server: Roku/9.3.0 UPnP/1.0 Roku/9.3.0\r\n
+    LOCATION: http://192.168.0.200:8060/\r\n
+    device-group.roku.com: 2BA1EC48DAE07CCD4103\r\n
+    WAKEUP: MAC=10:3d:0a:74:2b:08;Timeout=10\r\n
+    \r\n
+    [HTTP response 1/2]
+    [Next response in frame: 17]
+
+No.     Time           Source                Destination           Protocol Length Info
+     17 5.433086105    192.168.0.110         192.168.0.200         ICMP     337    Destination unreachable (Host administratively prohibited)
+
+Frame 17: 337 bytes on wire (2696 bits), 337 bytes captured (2696 bits) on interface 0
+    Interface id: 0
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Sep 19, 2020 17:24:13.463645913 CDT
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1600554253.463645913 seconds
+    [Time delta from previous captured frame: 0.000050007 seconds]
+    [Time delta from previous displayed frame: 0.000050007 seconds]
+    [Time since reference or first frame: 5.433086105 seconds]
+    Frame Number: 17
+    Frame Length: 337 bytes (2696 bits)
+    Capture Length: 337 bytes (2696 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ip:icmp:ip:udp:http]
+    [Number of per-protocol-data: 1]
+    [Hypertext Transfer Protocol, key 0]
+    [Coloring Rule Name: ICMP errors]
+    [Coloring Rule String: icmp.type eq 3 || icmp.type eq 4 || icmp.type eq 5 || icmp.type eq 11 || icmpv6.type eq 1 || icmpv6.type eq 2 || icmpv6.type eq 3 || icmpv6.type eq 4]
+Ethernet II, Src: Hewlett-_f6:30:90 (18:a9:05:f6:30:90), Dst: 10:3d:0a:74:2b:08 (10:3d:0a:74:2b:08)
+    Destination: 10:3d:0a:74:2b:08 (10:3d:0a:74:2b:08)
+        Address: 10:3d:0a:74:2b:08 (10:3d:0a:74:2b:08)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: Hewlett-_f6:30:90 (18:a9:05:f6:30:90)
+        Address: Hewlett-_f6:30:90 (18:a9:05:f6:30:90)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IP (0x0800)
+Internet Protocol Version 4, Src: 192.168.0.110 (192.168.0.110), Dst: 192.168.0.200 (192.168.0.200)
+    Version: 4
+    Header length: 20 bytes
+    Differentiated Services Field: 0xc0 (DSCP 0x30: Class Selector 6; ECN: 0x00: Not-ECT (Not ECN-Capable Transport))
+        1100 00.. = Differentiated Services Codepoint: Class Selector 6 (0x30)
+        .... ..00 = Explicit Congestion Notification: Not-ECT (Not ECN-Capable Transport) (0x00)
+    Total Length: 323
+    Identification: 0x1064 (4196)
+    Flags: 0x00
+        0... .... = Reserved bit: Not set
+        .0.. .... = Don't fragment: Not set
+        ..0. .... = More fragments: Not set
+    Fragment offset: 0
+    Time to live: 64
+    Protocol: ICMP (1)
+    Header checksum: 0xe60f [validation disabled]
+        [Good: False]
+        [Bad: False]
+    Source: 192.168.0.110 (192.168.0.110)
+    Destination: 192.168.0.200 (192.168.0.200)
+Internet Control Message Protocol
+    Type: 3 (Destination unreachable)
+    Code: 10 (Host administratively prohibited)
+    Checksum: 0x80a1 [correct]
+    Internet Protocol Version 4, Src: 192.168.0.200 (192.168.0.200), Dst: 192.168.0.110 (192.168.0.110)
+        Version: 4
+        Header length: 20 bytes
+        Differentiated Services Field: 0x00 (DSCP 0x00: Default; ECN: 0x00: Not-ECT (Not ECN-Capable Transport))
+            0000 00.. = Differentiated Services Codepoint: Default (0x00)
+            .... ..00 = Explicit Congestion Notification: Not-ECT (Not ECN-Capable Transport) (0x00)
+        Total Length: 295
+        Identification: 0x01d5 (469)
+        Flags: 0x02 (Don't Fragment)
+            0... .... = Reserved bit: Not set
+            .1.. .... = Don't fragment: Set
+            ..0. .... = More fragments: Not set
+        Fragment offset: 0
+        Time to live: 64
+        Protocol: UDP (17)
+        Header checksum: 0xb56a [validation disabled]
+            [Good: False]
+            [Bad: False]
+        Source: 192.168.0.200 (192.168.0.200)
+        Destination: 192.168.0.110 (192.168.0.110)
+    User Datagram Protocol, Src Port: ssdp (1900), Dst Port: 59840 (59840)
+        Source port: ssdp (1900)
+        Destination port: 59840 (59840)
+        Length: 275
+        Checksum: 0xbc7b [validation disabled]
+            [Good Checksum: False]
+            [Bad Checksum: False]
+    Hypertext Transfer Protocol
+        HTTP/1.1 200 OK\r\n
+            [Expert Info (Chat/Sequence): HTTP/1.1 200 OK\r\n]
+                [Message: HTTP/1.1 200 OK\r\n]
+                [Severity level: Chat]
+                [Group: Sequence]
+            Request Version: HTTP/1.1
+            Status Code: 200
+            Response Phrase: OK
+        Cache-Control: max-age=3600\r\n
+        ST: roku:ecp\r\n
+        USN: uuid:roku:ecp:YS00H7494838\r\n
+        Ext: \r\n
+        Server: Roku/9.3.0 UPnP/1.0 Roku/9.3.0\r\n
+        LOCATION: http://192.168.0.200:8060/\r\n
+        device-group.roku.com: 2BA1EC48DAE07CCD4103\r\n
+        WAKEUP: MAC=10:3d:0a:74:2b:08;Timeout=10\r\n
+        \r\n
+        [HTTP response 2/2]
+        [Prev response in frame: 16]

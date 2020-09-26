@@ -5,9 +5,35 @@ from tkinter import ttk
 from tkinter.ttk import *
 import requests
 import time
+import datetime
 import gui
+import concurrent.futures
+import logging
 
-### This is a basic working reote for power control
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+formatter  = logging.Formatter("%(asctime)s:%(name)s:%(message)s")
+file_handler = logging.FileHandler("RemoteKu_mainLog_{}.log".format(time.asctime()))
+file_handler.setLevel(logging.ERROR)
+file_handler.setFormatter(formatter)
+stream_handler = logging.StreamHandler()
+stream_handler.setFormatter(formatter)
+logger.addHandler(file_handler)
+logger.addHandler(stream_handler)
+
+def logger_func(orig_func):
+    import logging
+    formatter2 = logging.Formatter("%(asctime)s:%(name)s:%(message)s")
+    file_handler2 = logging.FileHandler("RemoteKu:{}_{}.log".format(orig_func, time.asctime()))
+    file_handler2.setFormatter(formatter2)
+    logger.addHandler(file_handler2)
+    def wrapper(*args, **kwargs):
+        logger.debug("DEBUG log for Func {} with args:{} and kwargs:{}".format(orig_func, args, kwargs))
+        return orig_func(*args, **kwargs)
+    return wrapper
+
+### This is basics such as variables and holders for devices
+global cur_hdmi
 stats_counter = 30
 counter = 0
 running = False
@@ -15,39 +41,86 @@ timing = 0
 result = "NULL"
 msg_box_text = ""
 api_port = ":8060"
-dadL = "http://192.168.0.111"
-dadR = "http://192.168.0.203"
-dadBOTH = [dadL, dadR]
-lrTV = "http://192.168.0.200"
-sisTV = "http://192.168.1.199"
-parkTV = "http://192.168.1.198"
-response = {}
-devs = {}
-    
+cur_hdmi = 1
+dev_list = {
+    "dadL": "http://192.168.0.111",
+    "dadR": "http://192.168.0.203",
+    "lrTV": "http://192.168.0.200",
+    "sisTV": "http://192.168.1.199",
+    "parkTV": "http://192.168.1.198"
+    }
+
+dev_grps = {
+    "dadBOTH": [dev_list.get("dadL"), dev_list.get("dadR")]
+    }
+
 api_calls = {
     "device_info": "/query/device-info",
     "get_apps": "/query/apps",
     "power_cycle": "/keypress/power",
     "active_app": "/query/active-app",
     "vol_up": "/keypress/volumeup",
-    "vol_down": "/keypress/volumedown"
+    "vol_down": "/keypress/volumedown",
+    "input": "/keypress/inputhdmi{}".format(cur_hdmi)
     }
 
-alive_devs = []
+def keypress(dev, key):
+    r = api_req(dev, "POST", key)
+    result = r.code
+    return result
+    
+@logger_func
+def threader(dev, func):
+    with concurrent.futures.ProcessPoolExecutor() as executor:
+        results = executor.submit(func, dev)
+        return(executor.result())
 
-def api_req(dev, api_call):
+@logger_func
+def api_post(dev, api_call, *args):
+    """
+    Function for api GET calls
+    """
     import xmltodict
+    import pdb
     try:
-        r = requests.get(dev + api_port + api_call, timeout=10)
+        r = requests.post(url=dev + api_port + api_call, timeout=10)
     except Exception as exc:
-        response = "ERR"
-        return response
+        response = ["ERR", exc]
+        return response[0]
     except ConnectionError as connerr:
-        response = "ERR"
+        response = ["ERR", connerr]
+        return response[0]
+    except TimeoutError as toerr:
+        response = ["ERR", toerr]
+        return response[0], toerr
+    r_code = r.status_code
+    if r_code == 200:
+        print("REQUEST WAS A SUCCESS. DEVICE RETURNED: {} ".format(str(r)))
+        r2 = r.text
+        response = r.code
         return response
-    except TimeoutError:
-        response = "ERR"
-        return response
+
+@logger_func    
+def api_req(dev, method, api_call):
+    """
+    Function for api GET calls
+    """
+    import xmltodict
+    import logging
+    import pdb
+    debugger = debug() 
+    method = method
+    try:
+        r = requests.Request(Method=method, url=dev + api_port + api_call, timeout=10)
+    except Exception as exc:
+        response = ["ERR", exc]
+        return response[0]
+    except ConnectionError as connerr:
+        response = ["ERR", connerr]
+        return response[0]
+    except TimeoutError as toerr:
+        response = ["ERR", toerr]
+        return response[0], toerr
     r_code = r.status_code
     if r_code == 200:
         print("REQUEST WAS A SUCCESS. DEVICE RETURNED: {} ".format(str(r)))
@@ -92,9 +165,16 @@ def pwrbtn_click(dev):
 
 def active_app(dev):
     api_call = api_calls.get("active_app")
-    response = api_req(dev)
+    response = api_req(dev, "get", api_call)
     act_app = response.get("active-app").get("app")
     return act_app
+
+def dev_status(dev):
+    for key,value in dev_list.items():
+        dev_url = value
+        result = threader(value, pwr_status)
+        dev_status = (result)
+        return dev_status
 
 def pwr_status(dev):
         api_call = "/query/device-info"
@@ -104,22 +184,98 @@ def pwr_status(dev):
             response = "Timeout Error Occured on : {}".format(dev)
             pwr_status = "Unknown"
             pwr_color = "red"
-            return pwr_color
+            return pwr_status, pwr_color
         dev_info = response.get("device-info")
         pwr_state = dev_info.get("power-mode")
         if pwr_state == "Ready":
-            pwr_status = "Ready"
+            pwr_status = "Sleep"
             pwr_color = "orange"
-            return pwr_color
+            return pwr_status, pwr_color
         elif pwr_state == "PowerOn":
             pwr_status = "On"
             pwr_color = "green"
-            return pwr_color
+            return pwr_status, pwr_color
         else:
             pwr_status = "Unknown"
             pwr_color = "red"
-            return pwr_color
+            return pwr_status, pwr_color
 
+tab_data = []
+def generate_tab_data(dev_list):
+    index = 1
+    for key,value in dev_list.items():
+        entry = [key, value]
+        x = tab_data.insert(index, entry)
+        index = index + 1
+get_tab_data = generate_tab_data(dev_list)
+
+@logger_func
+def input_hdmi_cycle(dev, cur_hdmi):
+    import itertools
+    hdmi_range = [1, 2, 3, 4]
+    num = itertools.cycle(hdmi_range)
+    cur_hdmi = num.__next__()
+    response = api_post(dev, api_calls.get("input"), cur_hdmi)
+    return response
+
+##    if cur_hdmi < 4:
+##        cur_hdmi = cur_hdmi + 1
+##        r = api_post(dev, api_calls.get("input" + str(cur_hdmi)))
+##        if cur_hdmi in hdmi_range:
+##            print("Value for cur_hdmi:{} in range".format(cur_hdmi))
+##            return cur_hdmi
+##        else:
+##            print("ERROR: INPUT value out of range")
+##            cur_hdmi = 1
+##            return cur_hdmi
+##    else:
+##            cur_hdmi = 1
+##            return cur_hdmi
+        
+############## Below is GUI definitions 
+root = Tk()
+root.title("RemoteKu C5dev--..")
+root.minsize(width=100, height=70)
+notebook1 = ttk.Notebook(root)
+notebook1.pack(pady=15)
+
+tab1 = ttk.Frame(notebook1)
+tab2 = ttk.Frame(notebook1)
+tab3 = ttk.Frame(notebook1)
+tab4 = ttk.Frame(notebook1)
+
+t1 =notebook1.add(tab1, text=tab_data[1][0])
+notebook1.add(tab2, text=tab_data[2][0])
+notebook1.add(tab3, text=tab_data[3][0])
+notebook1.add(tab4, text=tab_data[4][0])
+
+###########Current Tab Config Btns etc
+
+btn1 = ttk.Button(tab1, text="Pwr", command=lambda:api_post(tab_data[1][1],api_calls.get("power_cycle"))).grid(row=1, column=1)
+btn2 = ttk.Button(tab1, text=" ^ ").grid(row=1, column=2)
+btn3 = ttk.Button(tab1, text="Input", command=lambda:input_hdmi_cycle(tab_data[1][1],cur_hdmi)).grid(row=1, column=3)
+
+btn4 = ttk.Button(tab1, text=" < ").grid(row=2, column=1)
+btn5 = ttk.Button(tab1, text="Enter").grid(row=2, column=2)
+btn6 = ttk.Button(tab1, text=" > ").grid(row=2, column=3)
+
+btn7 = ttk.Button(tab1, text=" ").grid(row=3, column=1)
+btn8 = ttk.Button(tab1, text="\/").grid(row=3, column=2)
+btn9 = ttk.Button(tab1, text="Vol Up", command=lambda:api_post(tab_data[1][1],api_calls.get("vol_up"))).grid(row=3, column=3)
+
+btn10 = ttk.Button(tab1, text="Pwr L+R ", command=dadspwr).grid(row=4, column=1)
+btn11= ttk.Button(tab1, text="Stat").grid(row=4, column=2)
+btn12 = ttk.Button(tab1, text="Vol Dn", command=lambda:api_post(tab_data[1][1],api_calls.get("vol_down"))).grid(row=4, column=3)
+
+
+msg_frame1 = LabelFrame(tab1, text = "Message Box")
+msg_frame2 = LabelFrame(tab2, text = "Message Box")
+msg_frame3 = LabelFrame(tab3, text = "Message Box")
+msg_frame4 = LabelFrame(tab4, text = "Message Box")
+label1 = Label(msg_frame1, text="Welcome").pack()
+label2 = Label(msg_frame2, text="Welcome").pack()
+label3 = Label(msg_frame3, text="Welcome").pack()
+label4 = Label(msg_frame4, text="Welcome").pack()
 
 def msg_box(msg_label):
     def count():
@@ -135,7 +291,7 @@ def msg_box(msg_label):
                 display=msg_label#str(counter)
                 timing = display
 
-            label['text']=display # Or label.config(text=display)
+            label1['text']=display # Or label.config(text=display)
 
 # label.after(arg1, arg2) delays by
 # first argument given in milliseconds
@@ -143,7 +299,7 @@ def msg_box(msg_label):
 # Generally like here we need to call the
 # function in which it is present repeatedly.
 # Delays by 1000ms=1 seconds and call count again.
-            label.after(1000, count)
+            label1.after(1000, count)
             counter += 10
         else:
             if counter >= 1:
@@ -151,7 +307,7 @@ def msg_box(msg_label):
                 timing = display
                 print("DEBUG: The timing var shows " + str(timing))
                 print("DEBUG: Timer clocked  " + str(counter))
-                label['text']=display
+                label1['text']=display
                 
                 print("DEBUG: sending " + str(display) + " to convert_time....")
                 return convert_time(counter)
@@ -160,67 +316,13 @@ def msg_box(msg_label):
 # Triggering the start of the counter.
     count()
 
-root = Tk()
-root.title("RemoteKu C5dev--..")
-root.minsize(width=100, height=70)
-notebook1 = ttk.Notebook(root)
-notebook1.pack(pady=15)
-
-tab1 = ttk.Frame(notebook1)
-tab2 = ttk.Frame(notebook1)
-tab3 = ttk.Frame(notebook1)
-tab4 = ttk.Frame(notebook1)
-
-notebook1.add(tab1, text="CC-TVs")
-notebook1.add(tab2, text="LR-TV")
-notebook1.add(tab3, text="SIS-TV")
-notebook1.add(tab4, text="PARK-TV")
-
-btn1 = ttk.Button(tab1, text="Pwr").grid(row=1, column=1)
-btn2 = ttk.Button(tab1, text=" ^ ").grid(row=1, column=2)
-btn3 = ttk.Button(tab1, text="Input").grid(row=1, column=3)
-
-btn4 = ttk.Button(tab1, text=" < ").grid(row=2, column=1)
-btn5 = ttk.Button(tab1, text="Enter").grid(row=2, column=2)
-btn6 = ttk.Button(tab1, text=" > ").grid(row=2, column=3)
-
-btn7 = ttk.Button(tab1, text=" ").grid(row=3, column=1)
-btn8 = ttk.Button(tab1, text="\/").grid(row=3, column=2)
-btn9 = ttk.Button(tab1, text="Vol Up").grid(row=3, column=3)
-
-btn10 = ttk.Button(tab1, text=" ").grid(row=4, column=1)
-btn11= ttk.Button(tab1, text="Stat").grid(row=4, column=2)
-btn12 = ttk.Button(tab1, text="Vol Dn").grid(row=4, column=3)
-
-
-msg_frame1 = LabelFrame(tab1, text = "Message Box")
-msg_frame2 = LabelFrame(tab2, text = "Message Box")
-msg_frame3 = LabelFrame(tab3, text = "Message Box")
-msg_frame4 = LabelFrame(tab4, text = "Message Box")
-label1 = Label(msg_frame1, text="Welcome").pack()
-label2 = Label(msg_frame2, text="Welcome").pack()
-label3 = Label(msg_frame3, text="Welcome").pack()
-label4 = Label(msg_frame4, text="Welcome").pack()
-
-
-##button1 = Button(root, text="L Pwr", bg="white", command=lambda: pwrbtn_click(dadL))#, fg=pwr_status(dadL)  # , padx=50, pady=100)
-##button2 = Button(root, text="R Pwr", bg="white", command=lambda: pwrbtn_click(dadR))#, fg=pwr_status(dadL))
-##button5 = Button(root, text="LR TV Pwr", bg="white", command=lambda: pwrbtn_click(lrTV))#, fg=pwr_status(lrTV))
-##button3 = Button(root, text="Both Pwr", command=dadspwr)
-##button6 = Button(root, text="Park Pwr", bg="white", fg="red", command=lambda: pwrbtn_click(parkTV))
-##button7 = Button(root, text="Sis Pwr", bg="white", command=lambda: pwrbtn_click(sisTrV))
-##button4 = Button(root, text="Exit", command=root.destroy)
-##button1.grid(row=1, column=0)
-##button2.grid(row=1, column=1)
-##button3.grid(row=1, column=2)
-##button5.grid(row=2, column=0)
-##button6.grid(row=2, column=1)
-##button7.grid(row=2, column=2)
-##button4.grid(row=4)
 msg_frame1.grid(sticky="s", columnspan=10)
 msg_frame2.grid(sticky="s", columnspan=10)
 msg_frame3.grid(sticky="s", columnspan=10)
 msg_frame4.grid(sticky="s", columnspan=10)
 
+
+
+    
 
 root.mainloop()
