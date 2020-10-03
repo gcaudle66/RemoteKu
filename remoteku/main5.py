@@ -107,17 +107,15 @@ def api_post(dev, api_call, *args):
         return response
 
 @logger_func    
-def api_req(dev, method, api_call):
+def api_req(dev, api_call):
     """
     Function for api GET calls
     """
     import xmltodict
     import logging
     import pdb
-    debugger = debug() 
-    method = method
     try:
-        r = requests.Request(Method=method, url=dev + api_port + api_call, timeout=10)
+        r = request.get(dev + api_port + api_call, timeout=10)
     except Exception as exc:
         response = ["ERR", exc]
         return response[0]
@@ -136,7 +134,7 @@ def api_req(dev, method, api_call):
     else:
         response = "UnknownERR"
         dev.state(DISABLED)
-        return response
+        return msg_box(response)
 
 def dadspwr():
     for item in dadBOTH:
@@ -145,8 +143,7 @@ def dadspwr():
         global counter
         running = True
         counter = -1
-        msg_box(result)
-
+        return msg_box(result)
 def pwr(dev):
     try:
         r = requests.post(dev + ":8060/keypress/power")
@@ -167,7 +164,7 @@ def pwrbtn_click(dev):
     global counter
     running = True
     counter = -1
-    msg_box(result)
+    return msg_box(result)
 
 def active_app(dev):
     api_call = api_calls.get("active_app")
@@ -246,100 +243,83 @@ def generate_tab_data(dev_list):
         x = tab_data.insert(index, entry)
         index = index + 1
     return generate_tabs(tab_data)
-get_tab_data = generate_tab_data(dev_list)
     
 def generate_tabs(tab_data):
     for index,item in enumerate(tab_data):
-        tab[index] = ttk.Frame(notebook1)
-        notebook1.add(tab[index], text=item[1][0])
+        index = ttk.Frame(notebook1)
+        notebook1.add(index, text=item[0])
+        ##########Current Tab Config Btns etc
 
-tab1 = ttk.Frame(notebook1)
-tab2 = ttk.Frame(notebook1)
-tab3 = ttk.Frame(notebook1)
-tab4 = ttk.Frame(notebook1)
+        btn1 = ttk.Button(index, text="Pwr", command=lambda:api_post(item[1],api_calls.get("power_cycle"))).grid(row=1, column=1)
+        btn2 = ttk.Button(index, text=" ^ ").grid(row=1, column=2)
+        btn3 = ttk.Button(index, text="Input", command=lambda:input_hdmi_cycle(item[1],cur_hdmi)).grid(row=1, column=3)
 
-notebook1.add(tab1, text=tab_data[1][0])
-notebook1.add(tab2, text=tab_data[2][0])
-notebook1.add(tab3, text=tab_data[3][0])
-notebook1.add(tab4, text=tab_data[4][0])
+        btn4 = ttk.Button(index, text=" < ").grid(row=2, column=1)
+        btn5 = ttk.Button(index, text="Enter").grid(row=2, column=2)
+        btn6 = ttk.Button(index, text=" > ").grid(row=2, column=3)
 
-###########Current Tab Config Btns etc
+        btn7 = ttk.Button(index, text=" ").grid(row=3, column=1)
+        btn8 = ttk.Button(index, text="\/").grid(row=3, column=2)
+        btn9 = ttk.Button(index, text="Vol Up", command=lambda:api_post(item[1],api_calls.get("vol_up"))).grid(row=3, column=3)
 
-btn1 = ttk.Button(tab1, text="Pwr", command=lambda:api_post(tab_data[1][1],api_calls.get("power_cycle"))).grid(row=1, column=1)
-btn2 = ttk.Button(tab1, text=" ^ ").grid(row=1, column=2)
-btn3 = ttk.Button(tab1, text="Input", command=lambda:input_hdmi_cycle(tab_data[1][1],cur_hdmi)).grid(row=1, column=3)
-
-btn4 = ttk.Button(tab1, text=" < ").grid(row=2, column=1)
-btn5 = ttk.Button(tab1, text="Enter").grid(row=2, column=2)
-btn6 = ttk.Button(tab1, text=" > ").grid(row=2, column=3)
-
-btn7 = ttk.Button(tab1, text=" ").grid(row=3, column=1)
-btn8 = ttk.Button(tab1, text="\/").grid(row=3, column=2)
-btn9 = ttk.Button(tab1, text="Vol Up", command=lambda:api_post(tab_data[1][1],api_calls.get("vol_up"))).grid(row=3, column=3)
-
-btn10 = ttk.Button(tab1, text="Pwr L+R ", command=dadspwr).grid(row=4, column=1)
-btn11= ttk.Button(tab1, text="Stat").grid(row=4, column=2)
-btn12 = ttk.Button(tab1, text="Vol Dn", command=lambda:api_post(tab_data[1][1],api_calls.get("vol_down"))).grid(row=4, column=3)
+        btn10 = ttk.Button(index, text="Pwr L+R ", command=dadspwr).grid(row=4, column=1)
+        btn11= ttk.Button(index, text="Stat").grid(row=4, column=2)
+        btn12 = ttk.Button(index, text="Vol Dn", command=lambda:api_post(item[1],api_calls.get("vol_down"))).grid(row=4, column=3)
 
 
-msg_frame1 = LabelFrame(tab1, text = "Message Box")
-msg_frame2 = LabelFrame(tab2, text = "Message Box")
-msg_frame3 = LabelFrame(tab3, text = "Message Box")
-msg_frame4 = LabelFrame(tab4, text = "Message Box")
-label1 = Label(msg_frame1, text="Welcome").pack()
-label2 = Label(msg_frame2, text="Welcome").pack()
-label3 = Label(msg_frame3, text="Welcome").pack()
-label4 = Label(msg_frame4, text="Welcome").pack()
+        msg_frame1 = LabelFrame(index, text = "Message Box")
+
+        
+        label1 = Label(msg_frame1, text="Welcome").pack()
+
+        msg_frame1.grid(sticky="s", columnspan=10)
+
+get_tab_data = generate_tab_data(dev_list)
+
+def populateBtns(*args):
+    print(*args)
+
+event = notebook1.bind("<<NotebookTabChanged>>")
+
 
 def msg_box(msg_label):
-    def count():
-        if running:
-            global counter
+            def count():
+                if running:
+                    global counter
 
-# To manage the intial delay.
-            if counter==-1:
-                display=msg_label
-            elif counter > 20:
-                display=""
-            else:
-                display=msg_label#str(counter)
-                timing = display
+        # To manage the intial delay.
+                    if counter==-1:
+                        display=msg_label
+                    elif counter > 20:
+                        display=""
+                    else:
+                        display=msg_label#str(counter)
+                        timing = display
 
-            label1['text']=display # Or label.config(text=display)
+                    label1['text']=display # Or label.config(text=display)
 
-# label.after(arg1, arg2) delays by
-# first argument given in milliseconds
-# and then calls the function given as second argument.
-# Generally like here we need to call the
-# function in which it is present repeatedly.
-# Delays by 1000ms=1 seconds and call count again.
-            label1.after(1000, count)
-            counter += 10
-        else:
-            if counter >= 1:
-                display = (counter)
-                timing = display
-                print("DEBUG: The timing var shows " + str(timing))
-                print("DEBUG: Timer clocked  " + str(counter))
-                label1['text']=display
-                
-                print("DEBUG: sending " + str(display) + " to convert_time....")
-                return convert_time(counter)
-            else:
-                print("Value to low")
-# Triggering the start of the counter.
-    count()
-
-msg_frame1.grid(sticky="s", columnspan=10)
-msg_frame2.grid(sticky="s", columnspan=10)
-msg_frame3.grid(sticky="s", columnspan=10)
-msg_frame4.grid(sticky="s", columnspan=10)
-
-def populateBtns(event):
-    print(event)
-
-event = notebook1.bind("<<NotebookTabChanged>>", populateBtns(tab.name))
-
+        # label.after(arg1, arg2) delays by
+        # first argument given in milliseconds
+        # and then calls the function given as second argument.
+        # Generally like here we need to call the
+        # function in which it is present repeatedly.
+        # Delays by 1000ms=1 seconds and call count again.
+                    label1.after(1000, count)
+                    counter += 10
+                else:
+                    if counter >= 1:
+                        display = (counter)
+                        timing = display
+                        print("DEBUG: The timing var shows " + str(timing))
+                        print("DEBUG: Timer clocked  " + str(counter))
+                        label1['text']=display
+                        
+                        print("DEBUG: sending " + str(display) + " to convert_time....")
+                        return convert_time(counter)
+                    else:
+                        print("Value to low")
+        # Triggering the start of the counter.
+            count()
     
 
 root.mainloop()
