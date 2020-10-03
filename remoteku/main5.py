@@ -13,7 +13,7 @@ import logging
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 formatter  = logging.Formatter("%(asctime)s:%(name)s:%(message)s")
-file_handler = logging.FileHandler("RemoteKu_mainLog_{}.log".format(time.asctime()))
+file_handler = logging.FileHandler("RemoteKu_mainLog.log")
 file_handler.setLevel(logging.ERROR)
 file_handler.setFormatter(formatter)
 stream_handler = logging.StreamHandler()
@@ -24,7 +24,7 @@ logger.addHandler(stream_handler)
 def logger_func(orig_func):
     import logging
     formatter2 = logging.Formatter("%(asctime)s:%(name)s:%(message)s")
-    file_handler2 = logging.FileHandler("RemoteKu:{}_{}.log".format(orig_func, time.asctime()))
+    file_handler2 = logging.FileHandler("RemoteKu.log")
     file_handler2.setFormatter(formatter2)
     logger.addHandler(file_handler2)
     def wrapper(*args, **kwargs):
@@ -49,6 +49,12 @@ dev_list = {
     "sisTV": "http://192.168.1.199",
     "parkTV": "http://192.168.1.198"
     }
+
+dev_list2 = [["dadL", "http://192.168.0.111"],
+    ["dadR", "http://192.168.0.203"],
+    ["lrTV", "http://192.168.0.200"],
+    ["sisTV", "http://192.168.1.199"],
+    ["parkTV", "http://192.168.1.198"]]
 
 dev_grps = {
     "dadBOTH": [dev_list.get("dadL"), dev_list.get("dadR")]
@@ -200,14 +206,7 @@ def pwr_status(dev):
             pwr_color = "red"
             return pwr_status, pwr_color
 
-tab_data = []
-def generate_tab_data(dev_list):
-    index = 1
-    for key,value in dev_list.items():
-        entry = [key, value]
-        x = tab_data.insert(index, entry)
-        index = index + 1
-get_tab_data = generate_tab_data(dev_list)
+
 
 @logger_func
 def input_hdmi_cycle(dev, cur_hdmi):
@@ -239,12 +238,27 @@ root.minsize(width=100, height=70)
 notebook1 = ttk.Notebook(root)
 notebook1.pack(pady=15)
 
+tab_data = []
+def generate_tab_data(dev_list):
+    index = 1
+    for key,value in dev_list.items():
+        entry = [key, value]
+        x = tab_data.insert(index, entry)
+        index = index + 1
+    return generate_tabs(tab_data)
+get_tab_data = generate_tab_data(dev_list)
+    
+def generate_tabs(tab_data):
+    for index,item in enumerate(tab_data):
+        tab[index] = ttk.Frame(notebook1)
+        notebook1.add(tab[index], text=item[1][0])
+
 tab1 = ttk.Frame(notebook1)
 tab2 = ttk.Frame(notebook1)
 tab3 = ttk.Frame(notebook1)
 tab4 = ttk.Frame(notebook1)
 
-t1 =notebook1.add(tab1, text=tab_data[1][0])
+notebook1.add(tab1, text=tab_data[1][0])
 notebook1.add(tab2, text=tab_data[2][0])
 notebook1.add(tab3, text=tab_data[3][0])
 notebook1.add(tab4, text=tab_data[4][0])
@@ -321,7 +335,10 @@ msg_frame2.grid(sticky="s", columnspan=10)
 msg_frame3.grid(sticky="s", columnspan=10)
 msg_frame4.grid(sticky="s", columnspan=10)
 
+def populateBtns(event):
+    print(event)
 
+event = notebook1.bind("<<NotebookTabChanged>>", populateBtns(tab.name))
 
     
 
