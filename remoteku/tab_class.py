@@ -7,15 +7,16 @@ import requests
 import time
 
 class Tab:
-    def __init__(self, name, url, status, msgbox, state, index):
-        self.tab_title = name
+    def __init__(self, name, parent, url, state, index, msg):
+        self.name = name
+        self.parent = parent
         self.url = url
-        self.status = dev_status
-        self.msgbox = msgbox
         self.state = state
+        self.msg = msg
 
-        tab = ttk.Frame(notebook1)
-        notebook1.add(self.index, text=self.name)
+    def build_tab(self, *args, **kwargs):
+        self.index = ttk.Frame(self.parent)
+        self.parent.add(self.index, text=self.name)
         ##########Current Tab Config Btns etc
 
         btn1 = ttk.Button(self.index, text="Pwr", command=lambda:api_post(self.url,api_calls.get("power_cycle"))).grid(row=1, column=1)
@@ -34,10 +35,11 @@ class Tab:
         btn11= ttk.Button(self.index, text="Stat").grid(row=4, column=2)
         btn12 = ttk.Button(self.index, text="Vol Dn", command=lambda:api_post(self.url,api_calls.get("vol_down"))).grid(row=4, column=3)
 
+        msg_frame1 = LabelFrame(self.index, text = "Message Box")        
+        msgbox = Label(msg_frame1, text="Welcome").pack()
+        msg_frame1.grid(sticky="s", columnspan=10)
 
-        msg_frame1 = LabelFrame(self.index, text = "Message Box")
+    def set_msgbox(self, msg):
+        msgbox["text"] = msg
 
         
-        self.msgbox = Label(msg_frame1, text="Welcome").pack()
-
-        msg_frame1.grid(sticky="s", columnspan=10)

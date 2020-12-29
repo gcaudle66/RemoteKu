@@ -62,3 +62,201 @@
 2020-10-02 23:15:31,557:__main__:DEBUG log for Func <function api_post at 0x03950A90> with args:('http://192.168.1.198', '/keypress/power') and kwargs:{}
 2020-10-02 23:15:31,557:__main__:DEBUG log for Func <function api_post at 0x03950A90> with args:('http://192.168.1.198', '/keypress/power') and kwargs:{}
 2020-10-02 23:15:31,557:__main__:DEBUG log for Func <function api_post at 0x03950A90> with args:('http://192.168.1.198', '/keypress/power') and kwargs:{}
+2020-12-28 20:38:25,769:__main__:DEBUG log for Func <function api_post at 0x049633D0> with args:('http://192.168.0.111', '/keypress/power') and kwargs:{}
+2020-12-28 20:38:25,769:__main__:DEBUG log for Func <function api_post at 0x049633D0> with args:('http://192.168.0.111', '/keypress/power') and kwargs:{}
+2020-12-28 20:38:25,769:__main__:DEBUG log for Func <function api_post at 0x049633D0> with args:('http://192.168.0.111', '/keypress/power') and kwargs:{}
+2020-12-28 21:33:01,582:__main__:DEBUG log for Func <function api_post at 0x046D3418> with args:(<tkinter.ttk.Combobox object .!frame.!combobox>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 21:33:01,582:__main__:DEBUG log for Func <function api_post at 0x046D3418> with args:(<tkinter.ttk.Combobox object .!frame.!combobox>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 21:33:01,582:__main__:DEBUG log for Func <function api_post at 0x046D3418> with args:(<tkinter.ttk.Combobox object .!frame.!combobox>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 21:34:21,786:__main__:DEBUG log for Func <function api_post at 0x03D13418> with args:(<tkinter.ttk.Combobox object .!frame.!combobox>, '/keypress/power') and kwargs:{}
+2020-12-28 21:34:21,786:__main__:DEBUG log for Func <function api_post at 0x03D13418> with args:(<tkinter.ttk.Combobox object .!frame.!combobox>, '/keypress/power') and kwargs:{}
+2020-12-28 21:34:21,786:__main__:DEBUG log for Func <function api_post at 0x03D13418> with args:(<tkinter.ttk.Combobox object .!frame.!combobox>, '/keypress/power') and kwargs:{}
+2020-12-28 21:47:20,383:__main__:DEBUG log for Func <function api_post at 0x03A23418> with args:(<tkinter.ttk.Combobox object .!frame.!combobox>, '/keypress/power') and kwargs:{}
+2020-12-28 21:47:20,383:__main__:DEBUG log for Func <function api_post at 0x03A23418> with args:(<tkinter.ttk.Combobox object .!frame.!combobox>, '/keypress/power') and kwargs:{}
+2020-12-28 21:47:20,383:__main__:DEBUG log for Func <function api_post at 0x03A23418> with args:(<tkinter.ttk.Combobox object .!frame.!combobox>, '/keypress/power') and kwargs:{}
+2020-12-28 22:16:47,866:__main__:DEBUG log for Func <function api_post at 0x03D93418> with args:(<tkinter.StringVar object at 0x03D8A8F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:16:47,866:__main__:DEBUG log for Func <function api_post at 0x03D93418> with args:(<tkinter.StringVar object at 0x03D8A8F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:16:47,866:__main__:DEBUG log for Func <function api_post at 0x03D93418> with args:(<tkinter.StringVar object at 0x03D8A8F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:17:00,312:__main__:DEBUG log for Func <function api_post at 0x03D93418> with args:(<tkinter.StringVar object at 0x03D8A8F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:17:00,312:__main__:DEBUG log for Func <function api_post at 0x03D93418> with args:(<tkinter.StringVar object at 0x03D8A8F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:17:00,312:__main__:DEBUG log for Func <function api_post at 0x03D93418> with args:(<tkinter.StringVar object at 0x03D8A8F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:19:20,863:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:19:20,863:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:19:20,863:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:19:26,996:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:19:26,996:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:19:26,996:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:19:30,372:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:19:30,372:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:19:30,372:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:19:30,571:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:19:30,571:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:19:30,571:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:19:30,771:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:19:30,771:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:19:30,771:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:19:30,981:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:19:30,981:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:19:30,981:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:19:31,150:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:19:31,150:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:19:31,150:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:19:31,379:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:19:31,379:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:19:31,379:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:19:31,592:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:19:31,592:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:19:31,592:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:19:40,373:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:19:40,373:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:19:40,373:__main__:DEBUG log for Func <function api_post at 0x04523418> with args:(<tkinter.StringVar object at 0x0451A8F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:25:02,914:__main__:DEBUG log for Func <function api_post at 0x03DF3418> with args:(<tkinter.StringVar object at 0x03DEA8F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:25:02,914:__main__:DEBUG log for Func <function api_post at 0x03DF3418> with args:(<tkinter.StringVar object at 0x03DEA8F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:25:02,914:__main__:DEBUG log for Func <function api_post at 0x03DF3418> with args:(<tkinter.StringVar object at 0x03DEA8F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:36:10,164:__main__:DEBUG log for Func <function api_post at 0x043D3418> with args:(<tkinter.StringVar object at 0x043CA8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:36:10,164:__main__:DEBUG log for Func <function api_post at 0x043D3418> with args:(<tkinter.StringVar object at 0x043CA8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:36:10,164:__main__:DEBUG log for Func <function api_post at 0x043D3418> with args:(<tkinter.StringVar object at 0x043CA8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:36:12,126:__main__:DEBUG log for Func <function api_post at 0x043D3418> with args:(<tkinter.StringVar object at 0x043CA8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:36:12,126:__main__:DEBUG log for Func <function api_post at 0x043D3418> with args:(<tkinter.StringVar object at 0x043CA8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:36:12,126:__main__:DEBUG log for Func <function api_post at 0x043D3418> with args:(<tkinter.StringVar object at 0x043CA8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:36:12,721:__main__:DEBUG log for Func <function api_post at 0x043D3418> with args:(<tkinter.StringVar object at 0x043CA8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:36:12,721:__main__:DEBUG log for Func <function api_post at 0x043D3418> with args:(<tkinter.StringVar object at 0x043CA8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:36:12,721:__main__:DEBUG log for Func <function api_post at 0x043D3418> with args:(<tkinter.StringVar object at 0x043CA8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:36:12,949:__main__:DEBUG log for Func <function api_post at 0x043D3418> with args:(<tkinter.StringVar object at 0x043CA8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:36:12,949:__main__:DEBUG log for Func <function api_post at 0x043D3418> with args:(<tkinter.StringVar object at 0x043CA8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:36:12,949:__main__:DEBUG log for Func <function api_post at 0x043D3418> with args:(<tkinter.StringVar object at 0x043CA8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:36:13,163:__main__:DEBUG log for Func <function api_post at 0x043D3418> with args:(<tkinter.StringVar object at 0x043CA8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:36:13,163:__main__:DEBUG log for Func <function api_post at 0x043D3418> with args:(<tkinter.StringVar object at 0x043CA8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:36:13,163:__main__:DEBUG log for Func <function api_post at 0x043D3418> with args:(<tkinter.StringVar object at 0x043CA8F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:36:15,308:__main__:DEBUG log for Func <function api_post at 0x043D3418> with args:(<tkinter.StringVar object at 0x043CA8F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:36:15,308:__main__:DEBUG log for Func <function api_post at 0x043D3418> with args:(<tkinter.StringVar object at 0x043CA8F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:36:15,308:__main__:DEBUG log for Func <function api_post at 0x043D3418> with args:(<tkinter.StringVar object at 0x043CA8F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:40:49,997:__main__:DEBUG log for Func <function api_post at 0x042734A8> with args:(<tkinter.StringVar object at 0x042698F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:40:49,997:__main__:DEBUG log for Func <function api_post at 0x042734A8> with args:(<tkinter.StringVar object at 0x042698F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:40:49,997:__main__:DEBUG log for Func <function api_post at 0x042734A8> with args:(<tkinter.StringVar object at 0x042698F8>, '/keypress/power') and kwargs:{}
+2020-12-28 22:40:53,865:__main__:DEBUG log for Func <function api_post at 0x042734A8> with args:(<tkinter.StringVar object at 0x042698F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:40:53,865:__main__:DEBUG log for Func <function api_post at 0x042734A8> with args:(<tkinter.StringVar object at 0x042698F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:40:53,865:__main__:DEBUG log for Func <function api_post at 0x042734A8> with args:(<tkinter.StringVar object at 0x042698F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:40:54,095:__main__:DEBUG log for Func <function api_post at 0x042734A8> with args:(<tkinter.StringVar object at 0x042698F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:40:54,095:__main__:DEBUG log for Func <function api_post at 0x042734A8> with args:(<tkinter.StringVar object at 0x042698F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:40:54,095:__main__:DEBUG log for Func <function api_post at 0x042734A8> with args:(<tkinter.StringVar object at 0x042698F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:40:54,308:__main__:DEBUG log for Func <function api_post at 0x042734A8> with args:(<tkinter.StringVar object at 0x042698F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:40:54,308:__main__:DEBUG log for Func <function api_post at 0x042734A8> with args:(<tkinter.StringVar object at 0x042698F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:40:54,308:__main__:DEBUG log for Func <function api_post at 0x042734A8> with args:(<tkinter.StringVar object at 0x042698F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:40:54,528:__main__:DEBUG log for Func <function api_post at 0x042734A8> with args:(<tkinter.StringVar object at 0x042698F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:40:54,528:__main__:DEBUG log for Func <function api_post at 0x042734A8> with args:(<tkinter.StringVar object at 0x042698F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:40:54,528:__main__:DEBUG log for Func <function api_post at 0x042734A8> with args:(<tkinter.StringVar object at 0x042698F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:40:54,709:__main__:DEBUG log for Func <function api_post at 0x042734A8> with args:(<tkinter.StringVar object at 0x042698F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:40:54,709:__main__:DEBUG log for Func <function api_post at 0x042734A8> with args:(<tkinter.StringVar object at 0x042698F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:40:54,709:__main__:DEBUG log for Func <function api_post at 0x042734A8> with args:(<tkinter.StringVar object at 0x042698F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:40:54,919:__main__:DEBUG log for Func <function api_post at 0x042734A8> with args:(<tkinter.StringVar object at 0x042698F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:40:54,919:__main__:DEBUG log for Func <function api_post at 0x042734A8> with args:(<tkinter.StringVar object at 0x042698F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:40:54,919:__main__:DEBUG log for Func <function api_post at 0x042734A8> with args:(<tkinter.StringVar object at 0x042698F8>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:44:15,759:__main__:DEBUG log for Func <function api_post at 0x03D734A8> with args:(<tkinter.StringVar object at 0x03D6A8E0>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:44:15,759:__main__:DEBUG log for Func <function api_post at 0x03D734A8> with args:(<tkinter.StringVar object at 0x03D6A8E0>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:44:15,759:__main__:DEBUG log for Func <function api_post at 0x03D734A8> with args:(<tkinter.StringVar object at 0x03D6A8E0>, '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:46:35,209:__main__:DEBUG log for Func <function api_post at 0x03FF34A8> with args:(<tkinter.StringVar object at 0x03FE98E0>, '/keypress/power') and kwargs:{}
+2020-12-28 22:46:35,209:__main__:DEBUG log for Func <function api_post at 0x03FF34A8> with args:(<tkinter.StringVar object at 0x03FE98E0>, '/keypress/power') and kwargs:{}
+2020-12-28 22:46:35,209:__main__:DEBUG log for Func <function api_post at 0x03FF34A8> with args:(<tkinter.StringVar object at 0x03FE98E0>, '/keypress/power') and kwargs:{}
+2020-12-28 22:46:39,015:__main__:DEBUG log for Func <function api_post at 0x03FF34A8> with args:(<tkinter.StringVar object at 0x03FE98E0>, '/keypress/power') and kwargs:{}
+2020-12-28 22:46:39,015:__main__:DEBUG log for Func <function api_post at 0x03FF34A8> with args:(<tkinter.StringVar object at 0x03FE98E0>, '/keypress/power') and kwargs:{}
+2020-12-28 22:46:39,015:__main__:DEBUG log for Func <function api_post at 0x03FF34A8> with args:(<tkinter.StringVar object at 0x03FE98E0>, '/keypress/power') and kwargs:{}
+2020-12-28 22:47:49,269:__main__:DEBUG log for Func <function api_post at 0x04673460> with args:(<tkinter.StringVar object at 0x0466A8E0>, '/keypress/power') and kwargs:{}
+2020-12-28 22:47:49,269:__main__:DEBUG log for Func <function api_post at 0x04673460> with args:(<tkinter.StringVar object at 0x0466A8E0>, '/keypress/power') and kwargs:{}
+2020-12-28 22:47:49,269:__main__:DEBUG log for Func <function api_post at 0x04673460> with args:(<tkinter.StringVar object at 0x0466A8E0>, '/keypress/power') and kwargs:{}
+2020-12-28 22:47:53,986:__main__:DEBUG log for Func <function api_post at 0x04673460> with args:(<tkinter.StringVar object at 0x0466A8E0>, '/keypress/power') and kwargs:{}
+2020-12-28 22:47:53,986:__main__:DEBUG log for Func <function api_post at 0x04673460> with args:(<tkinter.StringVar object at 0x0466A8E0>, '/keypress/power') and kwargs:{}
+2020-12-28 22:47:53,986:__main__:DEBUG log for Func <function api_post at 0x04673460> with args:(<tkinter.StringVar object at 0x0466A8E0>, '/keypress/power') and kwargs:{}
+2020-12-28 22:50:46,439:__main__:DEBUG log for Func <function api_post at 0x04043460> with args:(<tkinter.StringVar object at 0x0403A8E0>, '/keypress/power') and kwargs:{}
+2020-12-28 22:50:46,439:__main__:DEBUG log for Func <function api_post at 0x04043460> with args:(<tkinter.StringVar object at 0x0403A8E0>, '/keypress/power') and kwargs:{}
+2020-12-28 22:50:46,439:__main__:DEBUG log for Func <function api_post at 0x04043460> with args:(<tkinter.StringVar object at 0x0403A8E0>, '/keypress/power') and kwargs:{}
+2020-12-28 22:54:48,331:__main__:DEBUG log for Func <function api_post at 0x048C3460> with args:(<tkinter.StringVar object at 0x048BB8E0>, '/keypress/power') and kwargs:{}
+2020-12-28 22:54:48,331:__main__:DEBUG log for Func <function api_post at 0x048C3460> with args:(<tkinter.StringVar object at 0x048BB8E0>, '/keypress/power') and kwargs:{}
+2020-12-28 22:54:48,331:__main__:DEBUG log for Func <function api_post at 0x048C3460> with args:(<tkinter.StringVar object at 0x048BB8E0>, '/keypress/power') and kwargs:{}
+2020-12-28 22:54:53,493:__main__:DEBUG log for Func <function api_post at 0x048C3460> with args:(<tkinter.StringVar object at 0x048BB8E0>, '/keypress/power') and kwargs:{}
+2020-12-28 22:54:53,493:__main__:DEBUG log for Func <function api_post at 0x048C3460> with args:(<tkinter.StringVar object at 0x048BB8E0>, '/keypress/power') and kwargs:{}
+2020-12-28 22:54:53,493:__main__:DEBUG log for Func <function api_post at 0x048C3460> with args:(<tkinter.StringVar object at 0x048BB8E0>, '/keypress/power') and kwargs:{}
+2020-12-28 22:55:49,695:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/power') and kwargs:{}
+2020-12-28 22:55:49,695:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/power') and kwargs:{}
+2020-12-28 22:55:49,695:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/power') and kwargs:{}
+2020-12-28 22:55:56,374:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/power') and kwargs:{}
+2020-12-28 22:55:56,374:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/power') and kwargs:{}
+2020-12-28 22:55:56,374:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/power') and kwargs:{}
+2020-12-28 22:56:13,561:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/power') and kwargs:{}
+2020-12-28 22:56:13,561:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/power') and kwargs:{}
+2020-12-28 22:56:13,561:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/power') and kwargs:{}
+2020-12-28 22:56:16,639:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/power') and kwargs:{}
+2020-12-28 22:56:16,639:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/power') and kwargs:{}
+2020-12-28 22:56:16,639:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/power') and kwargs:{}
+2020-12-28 22:56:36,755:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:56:36,755:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:56:36,755:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:56:37,041:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:56:37,041:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:56:37,041:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:56:37,318:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:56:37,318:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:56:37,318:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:56:38,439:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:56:38,439:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:56:38,439:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/volumeup') and kwargs:{}
+2020-12-28 22:56:40,964:__main__:DEBUG log for Func <function input_hdmi_cycle at 0x04343730> with args:(<tkinter.StringVar object at 0x0433A8E0>, 1) and kwargs:{}
+2020-12-28 22:56:40,964:__main__:DEBUG log for Func <function input_hdmi_cycle at 0x04343730> with args:(<tkinter.StringVar object at 0x0433A8E0>, 1) and kwargs:{}
+2020-12-28 22:56:40,964:__main__:DEBUG log for Func <function input_hdmi_cycle at 0x04343730> with args:(<tkinter.StringVar object at 0x0433A8E0>, 1) and kwargs:{}
+2020-12-28 22:56:41,019:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:(<tkinter.StringVar object at 0x0433A8E0>, '/keypress/inputhdmi1', 1) and kwargs:{}
+2020-12-28 22:56:41,019:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:(<tkinter.StringVar object at 0x0433A8E0>, '/keypress/inputhdmi1', 1) and kwargs:{}
+2020-12-28 22:56:41,019:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:(<tkinter.StringVar object at 0x0433A8E0>, '/keypress/inputhdmi1', 1) and kwargs:{}
+2020-12-28 22:56:42,478:__main__:DEBUG log for Func <function input_hdmi_cycle at 0x04343730> with args:(<tkinter.StringVar object at 0x0433A8E0>, 1) and kwargs:{}
+2020-12-28 22:56:42,478:__main__:DEBUG log for Func <function input_hdmi_cycle at 0x04343730> with args:(<tkinter.StringVar object at 0x0433A8E0>, 1) and kwargs:{}
+2020-12-28 22:56:42,478:__main__:DEBUG log for Func <function input_hdmi_cycle at 0x04343730> with args:(<tkinter.StringVar object at 0x0433A8E0>, 1) and kwargs:{}
+2020-12-28 22:56:42,500:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:(<tkinter.StringVar object at 0x0433A8E0>, '/keypress/inputhdmi1', 1) and kwargs:{}
+2020-12-28 22:56:42,500:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:(<tkinter.StringVar object at 0x0433A8E0>, '/keypress/inputhdmi1', 1) and kwargs:{}
+2020-12-28 22:56:42,500:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:(<tkinter.StringVar object at 0x0433A8E0>, '/keypress/inputhdmi1', 1) and kwargs:{}
+2020-12-28 22:56:46,179:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/power') and kwargs:{}
+2020-12-28 22:56:46,179:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/power') and kwargs:{}
+2020-12-28 22:56:46,179:__main__:DEBUG log for Func <function api_post at 0x04343460> with args:('http://192.168.1.155', '/keypress/power') and kwargs:{}
+2020-12-28 23:36:15,160:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.203', '/keypress/volumeup') and kwargs:{}
+2020-12-28 23:36:15,160:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.203', '/keypress/volumeup') and kwargs:{}
+2020-12-28 23:36:15,160:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.203', '/keypress/volumeup') and kwargs:{}
+2020-12-28 23:38:16,826:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/power') and kwargs:{}
+2020-12-28 23:38:16,826:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/power') and kwargs:{}
+2020-12-28 23:38:16,826:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/power') and kwargs:{}
+2020-12-28 23:38:29,831:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.203', '/keypress/power') and kwargs:{}
+2020-12-28 23:38:29,831:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.203', '/keypress/power') and kwargs:{}
+2020-12-28 23:38:29,831:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.203', '/keypress/power') and kwargs:{}
+2020-12-28 23:38:35,512:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/volumeup') and kwargs:{}
+2020-12-28 23:38:35,512:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/volumeup') and kwargs:{}
+2020-12-28 23:38:35,512:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/volumeup') and kwargs:{}
+2020-12-28 23:38:35,732:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/volumeup') and kwargs:{}
+2020-12-28 23:38:35,732:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/volumeup') and kwargs:{}
+2020-12-28 23:38:35,732:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/volumeup') and kwargs:{}
+2020-12-28 23:38:36,446:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/volumeup') and kwargs:{}
+2020-12-28 23:38:36,446:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/volumeup') and kwargs:{}
+2020-12-28 23:38:36,446:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/volumeup') and kwargs:{}
+2020-12-28 23:38:37,324:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/volumedown') and kwargs:{}
+2020-12-28 23:38:37,324:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/volumedown') and kwargs:{}
+2020-12-28 23:38:37,324:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/volumedown') and kwargs:{}
+2020-12-28 23:38:37,513:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/volumedown') and kwargs:{}
+2020-12-28 23:38:37,513:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/volumedown') and kwargs:{}
+2020-12-28 23:38:37,513:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/volumedown') and kwargs:{}
+2020-12-28 23:38:37,705:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/volumedown') and kwargs:{}
+2020-12-28 23:38:37,705:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/volumedown') and kwargs:{}
+2020-12-28 23:38:37,705:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/volumedown') and kwargs:{}
+2020-12-28 23:38:37,896:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/volumedown') and kwargs:{}
+2020-12-28 23:38:37,896:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/volumedown') and kwargs:{}
+2020-12-28 23:38:37,896:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.111', '/keypress/volumedown') and kwargs:{}
+2020-12-28 23:38:59,397:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.203', '/keypress/power') and kwargs:{}
+2020-12-28 23:38:59,397:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.203', '/keypress/power') and kwargs:{}
+2020-12-28 23:38:59,397:__main__:DEBUG log for Func <function api_post at 0x04383460> with args:('http://192.168.0.203', '/keypress/power') and kwargs:{}
+2020-12-28 23:48:27,093:__main__:DEBUG log for Func <function api_post at 0x04762460> with args:('http://192.168.0.203', '/keypress/power') and kwargs:{}
+2020-12-28 23:48:27,093:__main__:DEBUG log for Func <function api_post at 0x04762460> with args:('http://192.168.0.203', '/keypress/power') and kwargs:{}
+2020-12-28 23:48:27,093:__main__:DEBUG log for Func <function api_post at 0x04762460> with args:('http://192.168.0.203', '/keypress/power') and kwargs:{}
+2020-12-28 23:48:42,180:__main__:DEBUG log for Func <function api_post at 0x04762460> with args:('http://192.168.0.203', '/keypress/power') and kwargs:{}
+2020-12-28 23:48:42,180:__main__:DEBUG log for Func <function api_post at 0x04762460> with args:('http://192.168.0.203', '/keypress/power') and kwargs:{}
+2020-12-28 23:48:42,180:__main__:DEBUG log for Func <function api_post at 0x04762460> with args:('http://192.168.0.203', '/keypress/power') and kwargs:{}
+2020-12-28 23:50:46,249:__main__:DEBUG log for Func <function api_post at 0x03DC2460> with args:('http://192.168.0.203', '/keypress/power') and kwargs:{}
+2020-12-28 23:50:46,249:__main__:DEBUG log for Func <function api_post at 0x03DC2460> with args:('http://192.168.0.203', '/keypress/power') and kwargs:{}
+2020-12-28 23:50:46,249:__main__:DEBUG log for Func <function api_post at 0x03DC2460> with args:('http://192.168.0.203', '/keypress/power') and kwargs:{}
+2020-12-28 23:50:53,427:__main__:DEBUG log for Func <function api_post at 0x03DC2460> with args:('http://192.168.0.203', '/keypress/power') and kwargs:{}
+2020-12-28 23:50:53,427:__main__:DEBUG log for Func <function api_post at 0x03DC2460> with args:('http://192.168.0.203', '/keypress/power') and kwargs:{}
+2020-12-28 23:50:53,427:__main__:DEBUG log for Func <function api_post at 0x03DC2460> with args:('http://192.168.0.203', '/keypress/power') and kwargs:{}

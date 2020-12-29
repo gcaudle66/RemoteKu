@@ -246,33 +246,8 @@ def generate_tab_data(dev_list):
     
 def generate_tabs(tab_data):
     for index,item in enumerate(tab_data):
-        index = ttk.Frame(notebook1)
-        notebook1.add(index, text=item[0])
-        ##########Current Tab Config Btns etc
-
-        btn1 = ttk.Button(index, text="Pwr", command=lambda:api_post(item[1],api_calls.get("power_cycle"))).grid(row=1, column=1)
-        btn2 = ttk.Button(index, text=" ^ ").grid(row=1, column=2)
-        btn3 = ttk.Button(index, text="Input", command=lambda:input_hdmi_cycle(item[1],cur_hdmi)).grid(row=1, column=3)
-
-        btn4 = ttk.Button(index, text=" < ").grid(row=2, column=1)
-        btn5 = ttk.Button(index, text="Enter").grid(row=2, column=2)
-        btn6 = ttk.Button(index, text=" > ").grid(row=2, column=3)
-
-        btn7 = ttk.Button(index, text=" ").grid(row=3, column=1)
-        btn8 = ttk.Button(index, text="\/").grid(row=3, column=2)
-        btn9 = ttk.Button(index, text="Vol Up", command=lambda:api_post(item[1],api_calls.get("vol_up"))).grid(row=3, column=3)
-
-        btn10 = ttk.Button(index, text="Pwr L+R ", command=dadspwr).grid(row=4, column=1)
-        btn11= ttk.Button(index, text="Stat").grid(row=4, column=2)
-        btn12 = ttk.Button(index, text="Vol Dn", command=lambda:api_post(item[1],api_calls.get("vol_down"))).grid(row=4, column=3)
-
-
-        msg_frame1 = LabelFrame(index, text = "Message Box")
-
+        name = f"tab{index}"
         
-        label1 = Label(msg_frame1, text="Welcome").pack()
-
-        msg_frame1.grid(sticky="s", columnspan=10)
 
 get_tab_data = generate_tab_data(dev_list)
 

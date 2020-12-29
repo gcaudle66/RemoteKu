@@ -45,16 +45,18 @@ cur_hdmi = 1
 dev_list = {
     "dadL": "http://192.168.0.111",
     "dadR": "http://192.168.0.203",
-    "lrTV": "http://192.168.0.200",
+    "lrTV": "http://192.168.1.155",
     "sisTV": "http://192.168.1.199",
     "parkTV": "http://192.168.1.198"
     }
 
 dev_list2 = [["dadL", "http://192.168.0.111"],
     ["dadR", "http://192.168.0.203"],
-    ["lrTV", "http://192.168.0.200"],
+    ["lrTV", "http://192.168.1.155"],
     ["sisTV", "http://192.168.1.199"],
     ["parkTV", "http://192.168.1.198"]]
+
+
 
 dev_grps = {
     "dadBOTH": [dev_list.get("dadL"), dev_list.get("dadR")]
@@ -70,26 +72,32 @@ api_calls = {
     "input": "/keypress/inputhdmi{}".format(cur_hdmi)
     }
 
+def vals(dev_list):
+    val_list = []
+    for value in dev_list.values():
+        val_list.append(value)
+    return val_list
+
 def keypress(dev, key):
     r = api_req(dev, "POST", key)
     result = r.code
     return result
-    
-@logger_func
-def threader(dev, func):
-    with concurrent.futures.ProcessPoolExecutor() as executor:
-        results = executor.submit(func, dev)
-        return(executor.result())
+##    
+##@logger_func
+##def threader(dev, func):
+##    with concurrent.futures.ProcessPoolExecutor() as executor:
+##        results = executor.submit(func, dev)
+##        return(executor.result())
 
 @logger_func
-def api_post(dev, api_call, *args):
+def api_post(dev, api_call):
     """
     Function for api GET calls
     """
     import xmltodict
     import pdb
     try:
-        r = requests.post(url=dev + api_port + api_call, timeout=10)
+        r = requests.post(dev + ':8060' + api_call, timeout=10)
     except Exception as exc:
         response = ["ERR", exc]
         return response[0]
@@ -103,7 +111,7 @@ def api_post(dev, api_call, *args):
     if r_code == 200:
         print("REQUEST WAS A SUCCESS. DEVICE RETURNED: {} ".format(str(r)))
         r2 = r.text
-        response = r.code
+        response = r_code
         return response
 
 @logger_func    
@@ -115,7 +123,7 @@ def api_req(dev, api_call):
     import logging
     import pdb
     try:
-        r = request.get(dev + api_port + api_call, timeout=10)
+        r = request.get(dev + ':8060' + api_call, timeout=10)
     except Exception as exc:
         response = ["ERR", exc]
         return response[0]
@@ -227,59 +235,57 @@ def input_hdmi_cycle(dev, cur_hdmi):
 ##    else:
 ##            cur_hdmi = 1
 ##            return cur_hdmi
-        
-############## Below is GUI definitions 
+
+
+def select_dev(eventObject):
+    device = eventObject.get()
+    label1["text"] = "OK"
+    return device 
+    
+############## Below is GUI definitions
 root = Tk()
 root.title("RemoteKu C5dev--..")
 root.minsize(width=100, height=70)
-notebook1 = ttk.Notebook(root)
-notebook1.pack(pady=15)
 
-tab_data = []
-def generate_tab_data(dev_list):
-    index = 1
-    for key,value in dev_list.items():
-        entry = [key, value]
-        x = tab_data.insert(index, entry)
-        index = index + 1
-    return generate_tabs(tab_data)
-    
-def generate_tabs(tab_data):
-    for index,item in enumerate(tab_data):
-        index = ttk.Frame(notebook1)
-        notebook1.add(index, text=item[0])
-        ##########Current Tab Config Btns etc
+top = ttk.Frame(root)
+top.grid(columnspan=2, rowspan=2)
 
-        btn1 = ttk.Button(index, text="Pwr", command=lambda:api_post(item[1],api_calls.get("power_cycle"))).grid(row=1, column=1)
-        btn2 = ttk.Button(index, text=" ^ ").grid(row=1, column=2)
-        btn3 = ttk.Button(index, text="Input", command=lambda:input_hdmi_cycle(item[1],cur_hdmi)).grid(row=1, column=3)
+label1 = ttk.Label(top, text='Current Device').grid(column=0, row=1, pady=2)
 
-        btn4 = ttk.Button(index, text=" < ").grid(row=2, column=1)
-        btn5 = ttk.Button(index, text="Enter").grid(row=2, column=2)
-        btn6 = ttk.Button(index, text=" > ").grid(row=2, column=3)
+n = tkinter.StringVar()
+current_dev = ttk.Combobox(top, textvariable=n)
+current_dev['values'] = vals(dev_list)
+current_dev.current(2)
+current_dev.grid()
+top.bind('<<ComboboxSelected>>', select_dev)
 
-        btn7 = ttk.Button(index, text=" ").grid(row=3, column=1)
-        btn8 = ttk.Button(index, text="\/").grid(row=3, column=2)
-        btn9 = ttk.Button(index, text="Vol Up", command=lambda:api_post(item[1],api_calls.get("vol_up"))).grid(row=3, column=3)
+device = n.get()
 
-        btn10 = ttk.Button(index, text="Pwr L+R ", command=dadspwr).grid(row=4, column=1)
-        btn11= ttk.Button(index, text="Stat").grid(row=4, column=2)
-        btn12 = ttk.Button(index, text="Vol Dn", command=lambda:api_post(item[1],api_calls.get("vol_down"))).grid(row=4, column=3)
+sep1 = ttk.Separator(root, orient='horizontal').grid(row=2)
+
+index = ttk.Frame(root).grid(columnspan=3)
+##########Current Tab Config Btns etc
+
+btn1 = ttk.Button(index, text="Pwr", command=lambda:api_post(n.get(),api_calls.get("power_cycle"))).grid(row=3, column=0)
+btn2 = ttk.Button(index, text=" ^ ").grid(row=3, column=1)
+btn3 = ttk.Button(index, text="Input", command=lambda:input_hdmi_cycle(n,cur_hdmi)).grid(row=3, column=2)
+
+btn4 = ttk.Button(index, text=" < ").grid(row=4, column=0)
+btn5 = ttk.Button(index, text="Enter").grid(row=4, column=1)
+btn6 = ttk.Button(index, text=" > ").grid(row=4, column=2)
+
+btn7 = ttk.Button(index, text=" ").grid(row=5, column=0)
+btn8 = ttk.Button(index, text="\/").grid(row=5, column=1)
+btn9 = ttk.Button(index, text="Vol Up", command=lambda:api_post(n.get(),api_calls.get("vol_up"))).grid(row=5, column=2)
+
+btn10 = ttk.Button(index, text="Pwr L+R ", command=dadspwr).grid(row=6, column=0)
+btn11= ttk.Button(index, text="Stat").grid(row=6, column=1)
+btn12 = ttk.Button(index, text="Vol Dn", command=lambda:api_post(n.get(),api_calls.get("vol_down"))).grid(row=6, column=2)
 
 
-        msg_frame1 = LabelFrame(index, text = "Message Box")
+msg_frame1 = LabelFrame(root, text = "Message Box")
 
-        
-        label1 = Label(msg_frame1, text="Welcome").pack()
 
-        msg_frame1.grid(sticky="s", columnspan=10)
-
-get_tab_data = generate_tab_data(dev_list)
-
-def populateBtns(*args):
-    print(*args)
-
-event = notebook1.bind("<<NotebookTabChanged>>")
 
 
 def msg_box(msg_label):
@@ -321,5 +327,6 @@ def msg_box(msg_label):
         # Triggering the start of the counter.
             count()
     
-
+label1 = Label(msg_frame1, text="Welcome").pack()
+msg_frame1.grid(sticky="s", columnspan=3)
 root.mainloop()

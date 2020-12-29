@@ -1,9 +1,10 @@
-import tkinter as tk
-from tkinter import Tk
+import tkinter
+from tkinter import *
+from tkinter.constants import *
 from tkinter import ttk
 from tkinter.ttk import *
 
-class Menu:
+class Gui(tk.Frame):
         def __init__(self, master=None, **kwargs):
 
                 tk.Frame.__init__(self, master, **kwargs)
@@ -41,16 +42,3 @@ class Menu:
                 # General buttons
                 self.close_button = tk.Button(self, text='Save & Quit', command=self._save_quit)
                 self.close_button.grid(column=2, row=3)
-
-class Notebook:
-        def __init__(self, **kwargs):
-                self.tabs = ttk.Notebook(self)
-                self.tabs.grid(column=0, row=2, columnspan=3,padx=10,pady=10)
-
-                self.TabPre = Tab(self, 'Pre')
-                self.TabOptim = Tab(self, 'Optim')
-                self.TabPost = Tab(self, 'Post')
-
-                self.tabs.add(self.TabPre, text=self.TabPre.name)
-                self.tabs.add(self.TabOptim, text=self.TabOptim.name)
-                self.tabs.add(self.TabPost, text=self.TabPost.name)
