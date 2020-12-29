@@ -1,0 +1,15 @@
+ {
+     "devices": {
+         "dadL": {
+             "ip_address": "192.168.0.111",
+             "timeout":  20000,
+             "pressDelay": 2000
+         },
+         "dadR": {
+             "ip_address": 192.168.0.203,
+             "timeout":  25000,
+             "pressDelay": 1000
+         }
+     },
+     "outputdir": "Results"
+ }
