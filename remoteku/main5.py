@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter.constants import *
 from tkinter import ttk
 from tkinter.ttk import *
+import PySimpleGUI as sg
 import requests
 import time
 import datetime
@@ -10,6 +11,8 @@ import gui
 import concurrent.futures
 import logging
 import json
+import asyncio
+
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -43,6 +46,38 @@ result = "NULL"
 msg_box_text = ""
 api_port = ":8060"
 cur_hdmi = 1
+devices_listing = []
+
+root = tkinter.Tk()
+def toplevel_loading(devices_listing):
+    toplevel2 = tkinter.Toplevel(root)
+    toplevel2.title('Loading Devices...')
+    pbar = ttk.Progressbar(toplevel2)
+    pbar.mode('indeterminate')
+    with open('devices.json', mode='r') as f:
+        dev_in = json.load(f)
+    for dev in dev_in.get('devices').items():
+        devices_listing.append(dev)
+    dev_states = generate_devs(devices_listing)
+    return dev_states
+
+def open_file():
+    open_f = tkinter.filedialog.FileDialog(root, title="Choose File to Open")
+    with open(f'{open_f}', mode='r') as f:
+        dev_in = json.load(f)
+    for dev in dev_in.get('devices').items():
+        devices_listing.append(dev)
+    return generate_devs(devices_listing)
+
+def generate_devs(dev_in):
+    dev_states = []
+    for dev in dev_in:
+        dev_url = 'http://{}'.format(dev[1].get('ip_address'))
+        result = pwr_status(dev_url)
+        dev_status = (result)
+        dev_states.append(dev_status)
+    return dev_states
+
 dev_list = {
     "dadL": "http://192.168.0.111",
     "dadR": "http://192.168.0.203",
@@ -50,12 +85,6 @@ dev_list = {
     "sisTV": "http://192.168.1.199",
     "parkTV": "http://192.168.1.198"
     }
-
-dev_list2 = [["dadL", "http://192.168.0.111"],
-    ["dadR", "http://192.168.0.203"],
-    ["lrTV", "http://192.168.1.155"],
-    ["sisTV", "http://192.168.1.199"],
-    ["parkTV", "http://192.168.1.198"]]
 
 input_list = ['InputTuner', 'InputHDMI1','InputHDMI2', 'InputHDMI3', 'InputHDMI4']
 
@@ -100,23 +129,6 @@ def vals(dev_states):
             val_list.append(value[0])
     return val_list
 
-##def vals(dev_states):
-##    val_list = []
-##    for value in dev_list.values():
-##        val_list.append(value)
-##    return val_list
-
-def keypress(dev, key):
-    r = api_req(dev, "POST", key)
-    result = r.code
-    return result
-##    
-##@logger_func
-##def threader(dev, func):
-##    with concurrent.futures.ProcessPoolExecutor() as executor:
-##        results = executor.submit(func, dev)
-##        return(executor.result())
-
 @logger_func
 def api_post(dev, api_call):
     """
@@ -150,7 +162,7 @@ def api_req(dev, api_call):
     import xmltodict
     import logging
     try:
-        r = requests.get(dev + ':8060' + api_call, timeout=3)
+        r = requests.get(dev + ':8060' + api_call, timeout=5)
     except Exception as exc:
         response = ["ERR", exc]
         return response[0]
@@ -171,36 +183,6 @@ def api_req(dev, api_call):
         dev.state(DISABLED)
         return msg_box(response)
 
-def dadspwr():
-    for item in dadBOTH:
-        result = pwr(item)#requests.post(item + ":8060/keypress/power")
-        global running
-        global counter
-        running = True
-        counter = -1
-        return msg_box(result)
-def pwr(dev):
-    try:
-        r = requests.post(dev + ":8060/keypress/power")
-    except Exception as e:
-        result = "Exception thrown"#: {}".format(e))
-        return result
-    else:
-        if r.status_code == 200:
-            result = "OK"
-        else:
-            result= "ERROR"
-            return result
-
-def pwrbtn_click(dev):
-    result = pwr(dev)
-    pwr_state_fg = pwr_status(dev)
-    global running
-    global counter
-    running = True
-    counter = -1
-    return msg_box(result)
-
 def active_app(dev):
     api_call = api_calls.get("active_app")
     response = api_req(dev, "get", api_call)
@@ -213,6 +195,18 @@ def dev_status():
         dev_url = value
         result = pwr_status(value)
         dev_status = (result)
+        dev_states.append(dev_status)
+    return dev_states
+
+def dev_status_exec():
+    dev_states = []
+    for key,value in dev_list.items():
+        dev_url = value
+        with concurrent.futures.ProcessPoolExecutor() as executor:
+            rslts = executor.map(pwr_status, dev_url)
+            for r in rslts:
+                print(r)
+        dev_status = r
         dev_states.append(dev_status)
     return dev_states
 
@@ -261,6 +255,7 @@ def select_dev(eventObject):
     label1["text"] = "OK"
     return device
 
+
 def toplevel_input():
     ii = tkinter.StringVar()
     toplevel1 = tkinter.Toplevel(root)
@@ -275,31 +270,41 @@ def select_input(eventObject):
 ##    ii = eventObject.get()
     toplevel1.destroy()
     return ii
+
+def donothing():
+    pass
+
+def menu_close():
+    root.destroy()
     
 ############## Below is GUI definitions
-root = Tk()
+##root = Tk()
 root.title("RemoteKu C5dev--..")
 root.minsize(width=100, height=70)
+
+menubar = Menu(root)
+filemenu = Menu(menubar, tearoff = 0)
+filemenu.add_command(label="New", command = donothing)
+filemenu.add_command(label = "Open", command = open_file)
+filemenu.add_separator()
+filemenu.add_command(label = "Close", command = menu_close)
+menubar.add_cascade(label = "File", menu = filemenu)
 
 style1 = ttk.Style()
 style1.map("C.TButton",
     foreground=[('pressed', 'red'), ('active', 'blue')],
     background=[('pressed', '!disabled', 'black'), ('active', 'white')]
     )
-style1.map("C.TCombobox",
-    foreground=[('pressed', 'red'), ('active', 'red'), ('focus', 'red')],
-    focusfill=[('pressed', 'red'), ('active', 'red'), ('focus', 'red')],
-    fieldbackground=[('pressed', 'red'), ('active', 'red'), ('focus', 'red')],
-    background=[('pressed', '!disabled', 'red'), ('active', 'red')])
+
 top = ttk.Frame(root)
 top.grid(columnspan=2, rowspan=2)
 
 label1 = ttk.Label(top, text='Current Device').grid(column=0, row=1, pady=2)
 
 n = tkinter.StringVar()
-current_dev = ttk.Combobox(top, textvariable=n, style="C.TCombobox")
-current_dev['values'] = dev_check(dev_list)
-##current_dev.current(2)
+current_dev = ttk.Combobox(top, textvariable=n)
+current_dev['values'] = toplevel_loading(devices_listing)#generate_devs(devices_listing)
+current_dev.current(0)
 current_dev.grid()
 top.bind('<<ComboboxSelected>>', select_dev)
 
@@ -347,5 +352,7 @@ def msg_box(msg_label):
     label1['text'] = msg_label
     return label1
 
+root.config(menu = menubar)
 
-root.mainloop()
+if __name__ == '__main__':
+    root.mainloop()

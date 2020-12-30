@@ -1,12 +1,17 @@
  {
      "devices": {
-         "dadL": {
-             "ip_address": "192.168.0.111",
+         "Amarillo": {
+             "ip_address": "192.168.0.203",
              "timeout":  20000,
              "pressDelay": 2000
          },
-         "dadR": {
-             "ip_address": 192.168.0.203,
+         "Littlefield": {
+             "ip_address": "192.168.0.111",
+             "timeout":  25000,
+             "pressDelay": 1000
+         },
+		 "BigBrother": {
+             "ip_address": "192.168.1.155",
              "timeout":  25000,
              "pressDelay": 1000
          }
