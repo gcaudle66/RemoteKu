@@ -1,5 +1,0 @@
-DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.0.203:8060
-DEBUG:urllib3.connectionpool:http://192.168.0.203:8060 "POST /keypress/volumedown HTTP/1.1" 200 0
-DEBUG:urllib3:Added a stderr logging handler to logger: urllib3
-DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 192.168.0.203:8060
-DEBUG:urllib3.connectionpool:http://192.168.0.203:8060 "POST /keypress/volumeup HTTP/1.1" 200 0
