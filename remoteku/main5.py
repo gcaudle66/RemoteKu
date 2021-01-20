@@ -3,7 +3,6 @@ from tkinter import *
 from tkinter.constants import *
 from tkinter import ttk
 from tkinter.ttk import *
-#import PySimpleGUI as SG
 import requests
 import time
 import datetime
@@ -326,25 +325,38 @@ sep1 = ttk.Separator(root, orient='horizontal').grid(row=2)
 
 index = ttk.Frame(root).grid(columnspan=3)
 ##########Current Tab Config Btns etc
-
-btn1 = ttk.Button(index, style='C.TButton', text="Pwr", command=lambda:api_post(n[1].get(),api_calls.get("power_cycle"))).grid(row=3, column=0)
-btn2 = ttk.Button(index, text=" ^ ", width=50, height=50, command=lambda:api_post(n.get(),api_calls.get("up"))).grid(row=3, column=1)
-btn3 = ttk.Button(index, text="Input", command=toplevel_input).grid(row=3, column=2)#lambda:input_hdmi_cycle(n,cur_hdmi)).grid(row=3, column=2)
-
-btn4 = ttk.Button(index, text=" < ", command=lambda:api_post(n.get(),api_calls.get("left"))).grid(row=4, column=0)
-btn5 = ttk.Button(index, text="Enter", command=lambda:api_post(n.get(),api_calls.get("select"))).grid(row=4, column=1)
-btn6 = ttk.Button(index, text=" > ", command=lambda:api_post(n.get(),api_calls.get("right"))).grid(row=4, column=2)
-
-btn7 = ttk.Button(index, text="Mute", command=lambda:api_post(n.get(),api_calls.get("vol_mute"))).grid(row=5, column=0)
-btn8 = ttk.Button(index, text="\/", command=lambda:api_post(n.get(),api_calls.get("down"))).grid(row=5, column=1)
-btn9 = ttk.Button(index, text="Vol Up", command=lambda:api_post(n.get(),api_calls.get("vol_up"))).grid(row=5, column=2)
-
-btn10 = ttk.Button(index, text="Home", command=lambda:api_post(n.get(),api_calls.get("home"))).grid(row=6, column=0)
-btn11= ttk.Button(index, text="Info", command=lambda:api_post(n.get(),api_calls.get("info"))).grid(row=6, column=1)
-btn12 = ttk.Button(index, text="Vol Dn", command=lambda:api_post(n.get(),api_calls.get("vol_down"))).grid(row=6, column=2)
+btn1Img = PhotoImage(file='images/pwr.png')
+btn2Img = PhotoImage(file='images/nav_up.png')
+btn3Img = PhotoImage(file='images/input.png')
+btn4Img = PhotoImage(file='images/nav_left.png')
+btn5Img = PhotoImage(file='images/nav_ok.png')
+btn6Img = PhotoImage(file='images/nav_right.png')
+btn7Img = PhotoImage(file='images/mute.png')
+btn8Img = PhotoImage(file='images/nav_down.png')
+btn9Img = PhotoImage(file='images/vol_up.png')
+btn10Img = PhotoImage(file='images/home.png')
+btn11Img = PhotoImage(file='images/info.png')
+btn12Img = PhotoImage(file='images/vol_down.png')
 
 
-msg_frame1 = LabelFrame(root, text = "Message Box")
+btn1 = ttk.Button(index, style='C.TButton', text="Pwr", image=btn1Img, padding="0 0 0 0", command=lambda:api_post(n[1].get(),api_calls.get("power_cycle"))).grid(row=3, column=0)
+btn2 = ttk.Button(index, text=" ^ ", image=btn2Img, padding="0 0 0 0", command=lambda:api_post(n.get(),api_calls.get("up"))).grid(row=3, column=1)
+btn3 = ttk.Button(index, text="Input", image=btn3Img, padding="0 0 0 0", command=toplevel_input).grid(row=3, column=2)#lambda:input_hdmi_cycle(n,cur_hdmi)).grid(row=3, column=2)
+
+btn4 = ttk.Button(index, text=" < ", image=btn4Img, padding="0 0 0 0", command=lambda:api_post(n.get(),api_calls.get("left"))).grid(row=4, column=0)
+btn5 = ttk.Button(index, text="Enter", image=btn5Img, command=lambda:api_post(n.get(),api_calls.get("select"))).grid(row=4, column=1)
+btn6 = ttk.Button(index, text=" > ", image=btn6Img, command=lambda:api_post(n.get(),api_calls.get("right"))).grid(row=4, column=2)
+
+btn7 = ttk.Button(index, text="Mute", image=btn7Img, command=lambda:api_post(n.get(),api_calls.get("vol_mute"))).grid(row=5, column=0)
+btn8 = ttk.Button(index, text="\/", image=btn8Img, command=lambda:api_post(n.get(),api_calls.get("down"))).grid(row=5, column=1)
+btn9 = ttk.Button(index, text="Vol Up", image=btn9Img, command=lambda:api_post(n.get(),api_calls.get("vol_up"))).grid(row=5, column=2)
+
+btn10 = ttk.Button(index, text="Home", image=btn10Img, command=lambda:api_post(n.get(),api_calls.get("home"))).grid(row=6, column=0)
+btn11= ttk.Button(index, text="Info", image=btn8Img, command=lambda:api_post(n.get(),api_calls.get("info"))).grid(row=6, column=1)
+btn12 = ttk.Button(index, text="Vol Dn", image=btn12Img, command=lambda:api_post(n.get(),api_calls.get("vol_down"))).grid(row=6, column=2)
+
+
+msg_frame1 = LabelFrame(root, text = "Message Box", font="Tahoma")
 
 msg_initial = "Welcome"
 label1 = Label(msg_frame1)
