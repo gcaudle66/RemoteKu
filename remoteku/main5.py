@@ -328,7 +328,7 @@ index = ttk.Frame(root).grid(columnspan=3)
 ##########Current Tab Config Btns etc
 
 btn1 = ttk.Button(index, style='C.TButton', text="Pwr", command=lambda:api_post(n[1].get(),api_calls.get("power_cycle"))).grid(row=3, column=0)
-btn2 = ttk.Button(index, text=" ^ ", width=50, height=50, command=lambda:api_post(n.get(),api_calls.get("up"))).grid(row=3, column=1)
+btn2 = ttk.Button(index, text=" ^ ", command=lambda:api_post(n.get(),api_calls.get("up"))).grid(row=3, column=1)
 btn3 = ttk.Button(index, text="Input", command=toplevel_input).grid(row=3, column=2)#lambda:input_hdmi_cycle(n,cur_hdmi)).grid(row=3, column=2)
 
 btn4 = ttk.Button(index, text=" < ", command=lambda:api_post(n.get(),api_calls.get("left"))).grid(row=4, column=0)
