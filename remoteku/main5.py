@@ -3,7 +3,7 @@ from tkinter import *
 from tkinter.constants import *
 from tkinter import ttk
 from tkinter.ttk import *
-import PySimpleGUI as sg
+#import PySimpleGUI as SG
 import requests
 import time
 import datetime
@@ -49,20 +49,26 @@ cur_hdmi = 1
 devices_listing = []
 
 root = tkinter.Tk()
+root.wm_iconbitmap(default='wicon.ico')
+#root.tk_setPalette(background='purple', activeBackground='white', foreground='green')
 def toplevel_loading(devices_listing):
+    t = 'loading...'
     toplevel2 = tkinter.Toplevel(root)
     toplevel2.title('Loading Devices...')
-    pbar = ttk.Progressbar(toplevel2)
-    pbar.mode('indeterminate')
+    label1 = ttk.LabelFrame(toplevel2)
+    label1_1 = ttk.Label(label1, text=t)
+    label1.place()
+    label1_1.place()
     with open('devices.json', mode='r') as f:
         dev_in = json.load(f)
     for dev in dev_in.get('devices').items():
         devices_listing.append(dev)
     dev_states = generate_devs(devices_listing)
+    toplevel2.destroy()
     return dev_states
 
 def open_file():
-    open_f = tkinter.filedialog.FileDialog(root, title="Choose File to Open")
+    open_f = SG.FileBrowse(button_text='Browse', initial_folder='.')
     with open(f'{open_f}', mode='r') as f:
         dev_in = json.load(f)
     for dev in dev_in.get('devices').items():
@@ -76,7 +82,7 @@ def generate_devs(dev_in):
         result = pwr_status(dev_url)
         dev_status = (result)
         dev_states.append(dev_status)
-    return dev_states
+    return vals(dev_states)
 
 dev_list = {
     "dadL": "http://192.168.0.111",
@@ -281,7 +287,7 @@ def menu_close():
 ##root = Tk()
 root.title("RemoteKu C5dev--..")
 root.minsize(width=100, height=70)
-
+font1 = ttk.Separator
 menubar = Menu(root)
 filemenu = Menu(menubar, tearoff = 0)
 filemenu.add_command(label="New", command = donothing)
@@ -291,9 +297,8 @@ filemenu.add_command(label = "Close", command = menu_close)
 menubar.add_cascade(label = "File", menu = filemenu)
 
 style1 = ttk.Style()
-style1.map("C.TButton",
-    foreground=[('pressed', 'red'), ('active', 'blue')],
-    background=[('pressed', '!disabled', 'black'), ('active', 'white')]
+style1.map("C.TButton", foreground=[('pressed', 'red'), ('active', 'blue')],
+    background=[('pressed', '!disabled', 'black'), ('active', 'purple')]
     )
 
 top = ttk.Frame(root)
@@ -304,7 +309,7 @@ label1 = ttk.Label(top, text='Current Device').grid(column=0, row=1, pady=2)
 n = tkinter.StringVar()
 current_dev = ttk.Combobox(top, textvariable=n)
 current_dev['values'] = toplevel_loading(devices_listing)#generate_devs(devices_listing)
-current_dev.current(0)
+current_dev.current()
 current_dev.grid()
 top.bind('<<ComboboxSelected>>', select_dev)
 
@@ -323,7 +328,7 @@ index = ttk.Frame(root).grid(columnspan=3)
 ##########Current Tab Config Btns etc
 
 btn1 = ttk.Button(index, style='C.TButton', text="Pwr", command=lambda:api_post(n[1].get(),api_calls.get("power_cycle"))).grid(row=3, column=0)
-btn2 = ttk.Button(index, text=" ^ ", command=lambda:api_post(n.get(),api_calls.get("up"))).grid(row=3, column=1)
+btn2 = ttk.Button(index, text=" ^ ", width=50, height=50, command=lambda:api_post(n.get(),api_calls.get("up"))).grid(row=3, column=1)
 btn3 = ttk.Button(index, text="Input", command=toplevel_input).grid(row=3, column=2)#lambda:input_hdmi_cycle(n,cur_hdmi)).grid(row=3, column=2)
 
 btn4 = ttk.Button(index, text=" < ", command=lambda:api_post(n.get(),api_calls.get("left"))).grid(row=4, column=0)
@@ -355,4 +360,5 @@ def msg_box(msg_label):
 root.config(menu = menubar)
 
 if __name__ == '__main__':
+    SG.FileBrowse(button_text='Browse', file_types=('.json'))
     root.mainloop()
