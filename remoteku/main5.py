@@ -351,12 +351,12 @@ btn7 = ttk.Button(index, text="Mute", image=btn7Img, command=lambda:api_post(n.g
 btn8 = ttk.Button(index, text="\/", image=btn8Img, command=lambda:api_post(n.get(),api_calls.get("down"))).grid(row=5, column=1)
 btn9 = ttk.Button(index, text="Vol Up", image=btn9Img, command=lambda:api_post(n.get(),api_calls.get("vol_up"))).grid(row=5, column=2)
 
-btn10 = ttk.Button(index, text="Home", image=btn8Img, command=lambda:api_post(n.get(),api_calls.get("home"))).grid(row=6, column=0)
+btn10 = ttk.Button(index, text="Home", image=btn10Img, command=lambda:api_post(n.get(),api_calls.get("home"))).grid(row=6, column=0)
 btn11= ttk.Button(index, text="Info", image=btn8Img, command=lambda:api_post(n.get(),api_calls.get("info"))).grid(row=6, column=1)
 btn12 = ttk.Button(index, text="Vol Dn", image=btn12Img, command=lambda:api_post(n.get(),api_calls.get("vol_down"))).grid(row=6, column=2)
 
 
-msg_frame1 = LabelFrame(root, text = "Message Box")
+msg_frame1 = LabelFrame(root, text = "Message Box", font="Tahoma")
 
 msg_initial = "Welcome"
 label1 = Label(msg_frame1)
