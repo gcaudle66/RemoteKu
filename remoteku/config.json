@@ -1,0 +1,14 @@
+ {
+     "config": {
+         "DefaultDevice": {
+             "ip_address": "192.168.0.203",
+         },
+         "LastDevice": {
+             "ip_address": "192.168.0.111",
+         },
+		 "DevicesFile": {
+             "filename": "devices.json",
+         }
+     },
+     "outputdir": "Results"
+ }
