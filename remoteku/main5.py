@@ -51,6 +51,7 @@ devices_listing = []
 root = tkinter.Tk()
 root.wm_iconbitmap(default='wicon.ico')
 #root.tk_setPalette(background='purple', activeBackground='white', foreground='green')
+
 def toplevel_loading(devices_listing):
     t = 'loading...'
     toplevel2 = tkinter.Toplevel(root)
@@ -66,14 +67,6 @@ def toplevel_loading(devices_listing):
     dev_states = generate_devs(devices_listing)
     toplevel2.destroy()
     return dev_states
-
-def open_file():
-    open_f = SG.FileBrowse(button_text='Browse', initial_folder='.')
-    with open(f'{open_f}', mode='r') as f:
-        dev_in = json.load(f)
-    for dev in dev_in.get('devices').items():
-        devices_listing.append(dev)
-    return generate_devs(devices_listing)
 
 def generate_devs(dev_in):
     dev_states = []
@@ -155,7 +148,7 @@ def api_post(dev, api_call):
         return response[0], toerr
     r_code = r.status_code
     if r_code == 200:
-        print("REQUEST WAS A SUCCESS. DEVICE RETURNED: {} ".format(str(r)))
+        print("REQUEST WAS A SUCCESS. DEVICE {} RETURNED: {} ".format(n.get(), str(r)))
         r2 = r.text
         response = f'{r_code} - OK'
         return msg_box(response)
@@ -188,6 +181,7 @@ def api_req(dev, api_call):
         response = "UnknownERR"
         dev.state(DISABLED)
         return msg_box(response)
+    
 
 def active_app(dev):
     api_call = api_calls.get("active_app")
@@ -261,21 +255,60 @@ def select_dev(eventObject):
     label1["text"] = "OK"
     return device
 
+## Toplevel window for sending api calls
 
-def toplevel_input():
-    ii = tkinter.StringVar()
-    toplevel1 = tkinter.Toplevel(root)
-    toplevel1.title('RemoteKu-Input Selector')
-    input_combobox = ttk.Combobox(toplevel1, textvariable=ii)
-    input_combobox['values'] = inputs(input_list)
-    input_combobox.grid()
-    toplevel1.bind('<<ComboboxSelected>>', select_input)
-    return toplevel1
+apiPath_var = StringVar()
+apiMethod_var = StringVar()
+apiCall_var = StringVar()
 
-def select_input(eventObject):
-##    ii = eventObject.get()
-    toplevel1.destroy()
-    return ii
+@logger_func
+def toplevel_apiCall():
+    toplevel1 = Toplevel(root)
+    toplevel1.title('RemoteKu-Send API Call')
+    toplevel_label = Label(toplevel1, text="This window allows user to send API calls ").pack()
+##                             "to the current device. Provide only the path below, the URL " \
+##                             "and port auto-populate and the click the button to choose the " \
+##                             "method for the call (GET or POST). ex. http://2.2.3.2:8060/query/device-info")
+    path_label = Label(toplevel1, text="API Path:").pack()
+    path_entry = Entry(toplevel1, textvariable=apiPath_var).pack()
+    get_btn = Button(toplevel1, text="GET", command=lambda:build_apiCall("GET", apiPath_var)).pack()
+    post_btn = Button(toplevel1, text="POST", command=lambda:build_apiCall("POST", apiPath_var)).pack()
+    close_btn = Button(toplevel1, text="Close", command=toplevel1.destroy).pack()
+##    return build_apiCall(apiPath_var)
+
+##command=lambda:api_post(n.get(),api_calls.get("vol_mute"))
+@logger_func
+def build_apiCall(apiMethod, apiPath_var):
+    dev = n.get()
+    path = apiPath_var.get()
+    if apiMethod == "POST":
+        response =  api_post(dev, path)#requests.post(dev + ":8060" + path)
+        print(response)
+        return msg_box(response)
+    elif apiMethod == "GET":
+        response = api_req(dev, path)
+        print(response)
+        return msg_box(response)
+    else:
+        return msg_box("ERROR")
+    
+    
+#### end toplevel
+
+2##def toplevel_input():
+##    ii = tkinter.StringVar()
+##    toplevel1 = tkinter.Toplevel(root)
+##    toplevel1.title('RemoteKu-Input Selector')
+##    input_combobox = ttk.Combobox(toplevel1, textvariable=ii)
+##    input_combobox['values'] = inputs(input_list)
+##    input_combobox.grid()
+##    toplevel1.bind('<<ComboboxSelected>>', select_input)
+##    return toplevel1
+##
+##def select_input(eventObject):
+####    ii = eventObject.get()
+##    toplevel1.destroy()
+##    return ii
 
 def donothing():
     pass
@@ -291,7 +324,7 @@ font1 = ttk.Separator
 menubar = Menu(root)
 filemenu = Menu(menubar, tearoff = 0)
 filemenu.add_command(label="New", command = donothing)
-filemenu.add_command(label = "Open", command = open_file)
+##filemenu.add_command(label = "Open", command = open_file)
 filemenu.add_separator()
 filemenu.add_command(label = "Close", command = menu_close)
 menubar.add_cascade(label = "File", menu = filemenu)
@@ -315,20 +348,14 @@ top.bind('<<ComboboxSelected>>', select_dev)
 
 device = n.get()
 
-##ii = tkinter.StringVar()
-##toplevel1 = tkinter.Toplevel(root)
-##toplevel1.title('RemoteKu-Input Selector')
-##input_combobox = ttk.Combobox(toplevel1, textvariable=ii)
-##input_combobox['values'] = inputs(input_list)
-##input_combobox.grid()
 
 sep1 = ttk.Separator(root, orient='horizontal').grid(row=2)
 
-index = ttk.Frame(root).grid(columnspan=3)
+index = ttk.Frame(root).grid(columnspan=3, padx=0, pady=0)
 ##########Current Tab Config Btns etc
 btn1Img = PhotoImage(file='images/pwr.png')
 btn2Img = PhotoImage(file='images/nav_up.png')
-btn3Img = PhotoImage(file='images/input.png')
+btn3Img = PhotoImage(file='images/api.png')
 btn4Img = PhotoImage(file='images/nav_left.png')
 btn5Img = PhotoImage(file='images/nav_ok.png')
 btn6Img = PhotoImage(file='images/nav_right.png')
@@ -340,11 +367,11 @@ btn11Img = PhotoImage(file='images/info.png')
 btn12Img = PhotoImage(file='images/vol_down.png')
 
 
-btn1 = ttk.Button(index, style='C.TButton', text="Pwr", image=btn1Img, padding="0 0 0 0", command=lambda:api_post(n[1].get(),api_calls.get("power_cycle"))).grid(row=3, column=0)
-btn2 = ttk.Button(index, text=" ^ ", image=btn2Img, padding="0 0 0 0", command=lambda:api_post(n.get(),api_calls.get("up"))).grid(row=3, column=1)
-btn3 = ttk.Button(index, text="Input", image=btn3Img, padding="0 0 0 0", command=toplevel_input).grid(row=3, column=2)#lambda:input_hdmi_cycle(n,cur_hdmi)).grid(row=3, column=2)
+btn1 = ttk.Button(index, style='C.TButton', text="Pwr", image=btn1Img, command=lambda:api_post(n.get(),api_calls.get("power_cycle"))).grid(row=3, column=0)
+btn2 = ttk.Button(index, text=" ^ ", image=btn2Img, command=lambda:api_post(n.get(),api_calls.get("up"))).grid(row=3, column=1)
+btn3 = ttk.Button(index, text="API Call", image=btn3Img, command=toplevel_apiCall).grid(row=6, column=0)
 
-btn4 = ttk.Button(index, text=" < ", image=btn4Img, padding="0 0 0 0", command=lambda:api_post(n.get(),api_calls.get("left"))).grid(row=4, column=0)
+btn4 = ttk.Button(index, text=" < ", image=btn4Img, command=lambda:api_post(n.get(),api_calls.get("left"))).grid(row=4, column=0)
 btn5 = ttk.Button(index, text="Enter", image=btn5Img, command=lambda:api_post(n.get(),api_calls.get("select"))).grid(row=4, column=1)
 btn6 = ttk.Button(index, text=" > ", image=btn6Img, command=lambda:api_post(n.get(),api_calls.get("right"))).grid(row=4, column=2)
 
@@ -352,8 +379,8 @@ btn7 = ttk.Button(index, text="Mute", image=btn7Img, command=lambda:api_post(n.g
 btn8 = ttk.Button(index, text="\/", image=btn8Img, command=lambda:api_post(n.get(),api_calls.get("down"))).grid(row=5, column=1)
 btn9 = ttk.Button(index, text="Vol Up", image=btn9Img, command=lambda:api_post(n.get(),api_calls.get("vol_up"))).grid(row=5, column=2)
 
-btn10 = ttk.Button(index, text="Home", image=btn10Img, command=lambda:api_post(n.get(),api_calls.get("home"))).grid(row=6, column=0)
-btn11= ttk.Button(index, text="Info", image=btn8Img, command=lambda:api_post(n.get(),api_calls.get("info"))).grid(row=6, column=1)
+btn10 = ttk.Button(index, text="Home", image=btn10Img, command=lambda:api_post(n.get(),api_calls.get("home"))).grid(row=3, column=2)
+btn11= ttk.Button(index, text="Info", image=btn11Img, command=lambda:api_post(n.get(),api_calls.get("info"))).grid(row=6, column=1)
 btn12 = ttk.Button(index, text="Vol Dn", image=btn12Img, command=lambda:api_post(n.get(),api_calls.get("vol_down"))).grid(row=6, column=2)
 
 
@@ -373,5 +400,4 @@ def msg_box(msg_label):
 root.config(menu = menubar)
 
 if __name__ == '__main__':
-    SG.FileBrowse(button_text='Browse', file_types=('.json'))
     root.mainloop()
