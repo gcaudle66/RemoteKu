@@ -1,4 +1,5 @@
 import tkinter
+from collections import namedtuple
 from tkinter import *
 from tkinter.constants import *
 from tkinter import ttk
@@ -356,7 +357,7 @@ btn11= ttk.Button(index, text="Info", image=btn8Img, command=lambda:api_post(n.g
 btn12 = ttk.Button(index, text="Vol Dn", image=btn12Img, command=lambda:api_post(n.get(),api_calls.get("vol_down"))).grid(row=6, column=2)
 
 
-msg_frame1 = LabelFrame(root, text = "Message Box", font="Tahoma")
+msg_frame1 = LabelFrame(root, text = "Message Box",)
 
 msg_initial = "Welcome"
 label1 = Label(msg_frame1)
